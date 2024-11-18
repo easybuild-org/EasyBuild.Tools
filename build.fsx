@@ -1,12 +1,13 @@
 #r "nuget: Fun.Build, 1.1.14"
-#r "./src/bin/Debug/net6.0/EasyBuild.Tools.dll"
+#r "./src/bin/Debug/net6.0/publish/EasyBuild.Tools.dll"
+#r "./src/bin/Debug/net6.0/publish/BlackFox.CommandLine.dll"
+#r "./src/bin/Debug/net6.0/publish/SimpleExec.dll"
 #r "nuget: EasyBuild.FileSystemProvider, 0.3.0"
 
 open Fun.Build
 open EasyBuild.Tools.DotNet
 open EasyBuild.Tools.Git
 open EasyBuild.FileSystemProvider
-open System.IO
 
 type Workspace = RelativeFileSystem<".">
 
