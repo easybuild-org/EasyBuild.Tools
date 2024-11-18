@@ -10,15 +10,6 @@ open System.IO
 
 type Workspace = RelativeFileSystem<".">
 
-type VirtualWorkspace =
-    VirtualFileSystem<
-        "./src",
-        """
-bin/
-obj/
-"""
-     >
-
 let options =
     {|
         NUGET_KEY = EnvArg.Create("NUGET_KEY", description = "The NuGet key to use for publishing")
@@ -26,13 +17,6 @@ let options =
 
 pipeline "release" {
     whenEnvVar options.NUGET_KEY
-
-    stage "Clean up" {
-        run (fun _ ->
-            if Directory.Exists VirtualWorkspace.bin.``.`` then
-                Directory.Delete(VirtualWorkspace.bin.``.``, true)
-        )
-    }
 
     stage "Pack and publish" {
         run (fun _ ->
