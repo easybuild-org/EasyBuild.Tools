@@ -83,6 +83,7 @@ Output:
 
     static member changelogGen
         (
+            changelogFile : string,
             ?allowDirty: bool,
             ?allowBranch: string list,
             ?tagFilter: string list,
@@ -110,6 +111,7 @@ Output:
                 "dotnet",
                 CmdLine.empty
                 |> CmdLine.appendRaw "changelog-gen"
+                |> CmdLine.appendRaw changelogFile
                 |> CmdLine.appendIf (defaultArg allowDirty false) "--allow-dirty"
                 |> CmdLine.appendIf (defaultArg skipInvalidCommit false) "--skip-invalid-commit"
                 |> CmdLine.appendIf (defaultArg dryRun false) "--dry-run"

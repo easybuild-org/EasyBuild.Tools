@@ -21,7 +21,7 @@ pipeline "release" {
 
     stage "Pack and publish" {
         run (fun _ ->
-            let newVersion = DotNet.changelogGen ()
+            let newVersion = DotNet.changelogGen Workspace.``CHANGELOG.md``
 
             let nupkgPath = DotNet.pack (workingDirectory = Workspace.src.``.``)
 
