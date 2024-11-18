@@ -20,7 +20,9 @@ obj/
      >
 
 let options =
-    {| NUGET_KEY = EnvArg.Create("NUGET_KEY", description = "The NuGet key to use for publishing") |}
+    {|
+        NUGET_KEY = EnvArg.Create("NUGET_KEY", description = "The NuGet key to use for publishing")
+    |}
 
 pipeline "release" {
     whenEnvVar options.NUGET_KEY
@@ -41,7 +43,9 @@ pipeline "release" {
             DotNet.nugetPush nupkgPath
 
             Git.addAll ()
-            Git.commitRelease newVersion)
+            Git.commitRelease newVersion
+            Git.push ()
+        )
     }
 
     runIfOnlySpecified
