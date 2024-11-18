@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ChangelogFile>$(MSBuildThisFileDirectory)../CHANGELOG.md</ChangelogFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="DotNet.fs" />
+        <Compile Include="Git.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BlackFox.CommandLine" />
+        <PackageReference Include="EasyBuild.PackageReleaseNotes.Tasks">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="FSharp.Core" />
+        <PackageReference Include="SimpleExec" />
+    </ItemGroup>
+
+</Project>

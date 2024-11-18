@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="BlackFox.CommandLine" Version="1.0.0" />
+    <PackageVersion Include="EasyBuild.PackageReleaseNotes.Tasks" Version="2.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageVersion>
+    <PackageVersion Include="FSharp.Core" Version="5.0.2" />
+    <PackageVersion Include="SimpleExec" Version="12.0.0" />
+  </ItemGroup>
+</Project>
