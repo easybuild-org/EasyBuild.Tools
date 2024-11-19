@@ -16,6 +16,11 @@ let options =
         NUGET_KEY = EnvArg.Create("NUGET_KEY", description = "The NuGet key to use for publishing")
     |}
 
+pipeline "Install Git hooks" {
+    stage "Husky" { run "dotnet husky install" }
+    runImmediate // Always run this pipeline
+}
+
 pipeline "release" {
     whenEnvVar options.NUGET_KEY
 

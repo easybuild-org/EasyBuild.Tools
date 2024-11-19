@@ -9,9 +9,7 @@ module private CmdLine =
 
     let appendPrefixesIfSome (prefix: string) (values: string list option) (cmdLine: CmdLine) =
         match values with
-        | Some values ->
-            cmdLine
-            |> CmdLine.appendPrefixSeq prefix values
+        | Some values -> cmdLine |> CmdLine.appendPrefixSeq prefix values
         | None -> cmdLine
 
 [<RequireQualifiedAccess>]
@@ -53,19 +51,30 @@ type DotNet =
 Output:
 {standardOutput}"""
 
-    static member nugetPush(nupkgPath: FileInfo, ?nugetKey: string, ?skipDuplicate: bool, ?source: string, ?forceEcho : bool) =
+    static member nugetPush
+        (
+            nupkgPath: FileInfo,
+            ?nugetKey: string,
+            ?skipDuplicate: bool,
+            ?source: string,
+            ?forceEcho: bool
+        )
+        =
         let skipDuplicate = defaultArg skipDuplicate true
+
         let nugetKey =
             match nugetKey with
             | Some k -> k
             | None ->
                 let key = System.Environment.GetEnvironmentVariable("NUGET_KEY")
+
                 if isNull key then
-                    failwith "NUGET_KEY environment variable is not set, you can also pass it as an argument"
+                    failwith
+                        "NUGET_KEY environment variable is not set, you can also pass it as an argument"
                 else
                     key
-        let source =
-            defaultArg source "https://api.nuget.org/v3/index.json"
+
+        let source = defaultArg source "https://api.nuget.org/v3/index.json"
 
         Command.Run(
             "dotnet",
@@ -83,7 +92,7 @@ Output:
 
     static member changelogGen
         (
-            changelogFile : string,
+            changelogFile: string,
             ?allowDirty: bool,
             ?allowBranch: string list,
             ?tagFilter: string list,
@@ -94,17 +103,15 @@ Output:
             ?githubRepo: string,
             ?workingDirectory: string,
             ?forwardArguments: string list
-        ) =
+        )
+        =
         let appendForwardArguments (cmdLine: CmdLine) =
             match forwardArguments with
             | Some args ->
                 let args = args |> String.concat " "
 
-                cmdLine
-                |> CmdLine.appendRaw "--"
-                |> CmdLine.appendRaw args
-            | None ->
-                cmdLine
+                cmdLine |> CmdLine.appendRaw "--" |> CmdLine.appendRaw args
+            | None -> cmdLine
 
         let (struct (newVersion, _)) =
             Command.ReadAsync(
