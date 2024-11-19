@@ -1,201 +1,197 @@
-# EasyBuild.ChangelogGen
+# EasyBuild.Tools
 
-[![NuGet](https://img.shields.io/nuget/v/EasyBuild.ChangelogGen.svg)](https://www.nuget.org/packages/EasyBuild.ChangelogGen)
+[![NuGet](https://img.shields.io/nuget/v/EasyBuild.Tools.svg)](https://www.nuget.org/packages/EasyBuild.Tools)
 
 [![Sponsors badge link](https://img.shields.io/badge/Sponsors_this_project-EA4AAA?style=for-the-badge)](https://mangelmaxime.github.io/sponsors/)
 
 Tool for generating changelog based on Git history based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). It is using [EasyBuild.CommitParser](https://github.com/easybuild-org/EasyBuild.CommitParser) to parse commit messages check their documentation for more information about configuration.
 
-## Usage
+## Installation
 
 ```bash
-# Install the tool
-dotnet tool install EasyBuild.ChangelogGen
-
-# Run the tool
-dotnet changelog-gen
+dotnet add package EasyBuild.Tools
 ```
 
-### CLI manual
+## APIs
 
-```txt
-USAGE:
-    changelog-gen [changelog] [OPTIONS] [COMMAND]
+### `Git`
 
-ARGUMENTS:
-    [changelog]    Path to the changelog file. Default is CHANGELOG.md
+<details>
+<summary>
+<code>Git.addAll</code>
+- add all files to staging area
+</summary>
 
-OPTIONS:
-                                     DEFAULT
-    -h, --help                                  Prints help information
-    -v, --version                               Prints version information
-    -c, --config                                Path to the configuration file
-        --allow-dirty                           Allow to run in a dirty repository
-                                                (having not commit changes in your
-                                                reporitory)
-        --allow-branch <VALUES>                 List of branches that are allowed to
-                                                be used to generate the changelog.
-                                                Default is 'main'
-        --tag <VALUES>                          List of tags to include in the
-                                                changelog
-        --pre-release [PREFIX]       beta       Indicate that the generated version is
-                                                a pre-release version. Optionally, you
-                                                can provide a prefix for the beta
-                                                version. Default is 'beta'
-        --force-version <VERSION>               Force the version to be used in the
-                                                changelog
-        --skip-invalid-commit                   Skip invalid commits instead of
-                                                failing
-        --dry-run                               Run the command without writing to the
-                                                changelog file, output the result in
-                                                STDOUT instead
-        --github-repo <REPO>                    GitHub repository name in format
-                                                'owner/repo'
+#### Parameters
 
-COMMANDS:
-    version
+None
+
+#### Returns
+
+`unit`
+
+#### Example
+
+```fs
+open EasyBuild.Tools.Git
+
+Git.addAll()
 ```
 
-### How is the version calculated?
+</details>
 
-### Stable versions
+<details>
+<summary>
+<code>Git.commitRelease</code>
+- commit staged files with release message using conventional commit
+</summary>
 
-The version is calculated based on the commit messages since last released.
+#### Parameters
 
-Rules are the following:
+| name         | type     | required | description        |
+| ------------ | -------- | :------: | ------------------ |
+| `newVersion` | `string` |    ✅    | Version to release |
 
-- A `breaking change` commit will bump the major version
+#### Returns
 
-    ```text
-    * chore: release 1.2.10
-    * feat!: first feature # => 2.0.0
-    ```
+`unit`
 
-- `feat` commits will bump the minor version
+#### Example
 
-    ```text
-    * chore: release 1.2.10
-    * feat: first feature
-    * feat: second feature # => 1.3.0
-    ```
+```fs
+open EasyBuild.Tools.Git
 
-- `fix` commits will bump the patch version
-
-    ```text
-    * chore: release 1.2.10
-    * fix: first fix
-    * fix: second fix # => 1.2.11
-    ```
-
-You can mix different types of commits, the highest version will be used (`breaking change` > `feat` > `fix`).
-
-```text
-* chore: release 1.2.10
-* feat: first feature
-* fix: first fix # => 1.3.0
+// Create a commit with message "chore: release 1.0.0"
+Git.commitRelease "1.0.0"
 ```
 
-### Pre-release versions
+</details>
 
-Passing `--pre-release [PREFIX]` will generate a pre-release version.
+<details>
+<summary>
+<code>Git.push</code>
+- push changes to remote repository
+</summary>
 
-Rules are the following:
+#### Parameters
 
-- If the previous version is **stable**, then we compute the standard version bump and start a new pre-release version.
+| name    | type   | required | description                 |
+| ------- | ------ | :------: | --------------------------- |
+| `force` | `bool` |    ❌    | Force push to remote branch |
 
-    ```text
-    * chore: release 1.2.10
-    * feat: first feature
-    * fix: first fix # => 1.3.0-beta.1
-    ```
+#### Returns
 
-- If the previous version is a **pre-release**, with the same suffix, then we increment the pre-release version.
+`unit`
 
-    ```text
-    * chore: release 1.3.0-beta.10
-    * feat: first feature
-    * fix: first fix # => 1.3.0-beta.11
-    ```
+#### Example
 
-- If the previous version is a **pre-release**, with a different suffix, then we use the same base version and start a new pre-release version.
+```fs
+open EasyBuild.Tools.Git
 
-    ```text
-    * chore: release 1.3.0-alpha.10
-    * feat: first feature
-    * fix: first fix # => 1.3.0-beta.1
-    ```
-
-**💡 Tips**
-
-EasyBuild.Changelog use the last version in the changelog file to compute the next version.
-
-For this reason, while working on a pre-release, it is advised to work in a separate branch from the main branch. This allows you to work on the pre-release while still being able to release new versions on the main branch.
-
-```text
-* chore: release 1.2.10
-| \
-|  * feat!: remove `foo` API
-|  * feat: add `bar` API        # => 2.0.0.beta.1
-|  * fix: fix `baz` API
-* fix: fix `qux` API
-* chore: release 1.2.11
-|  * fix: fix `qux` API         # => 2.0.0.beta.2
-| /
-* chore: release 2.0.0          # => 2.0.0
+Git.push()
 ```
 
-### Moving out of pre-release
+</details>
 
-If you want to move out of pre-release, you simply need to remove the `--pre-release` CLI options.
+### `DotNet`
 
-Then the next version will be released using the base version of the previous pre-release.
+<details>
+<summary>
+<code>DotNet.changelogGen</code>
+- generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.ChangelogGen">EasyBuild.ChangelogGen</a>
+</code>
+</summary>
 
-```text
-* chore: release 1.3.0-beta.10
-* feat: first feature
-* fix: first fix # => 1.3.0
+#### Parameters
+
+| name                | type          | required | default | description                                                                                                                                    |
+| ------------------- | ------------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `changelogFile`     | `string`      |    ✅    |         |                                                                                                                                                |
+| `allowDirty`        | `bool`        |    ❌    |         | Allow to run in a dirty repository                                                                                                             |
+| `allowBranch`       | `string list` |    ❌    | `main`  | List of branches that are allowed to be used to generate the changelog.                                                                        |
+| `tagFilter`         | `string list` |    ❌    |         | List of tags to include in the changelog                                                                                                       |
+| `preRelease`        | `string`      |    ❌    |         | Indicate that the generated version is a pre-release version.                                                                                  |
+| `forceVersion`      | `string`      |    ❌    |         | Force the version to be used in the changelog                                                                                                  |
+| `skipInvalidCommit` | `bool`        |    ❌    |         | Skip invalid commits instead of failing                                                                                                        |
+| `dryRun`            | `bool`        |    ❌    |         | Run the command without writing to the changelog file, output the result in STDOUT instead                                                     |
+| `githubRepo`        | `string`      |    ❌    |         | GitHub repository name in format 'owner/repo'                                                                                                  |
+| `workingDirectory`  | `string`      |    ❌    |         | Working directory path                                                                                                                         |
+| `forwardArguments`  | `string list` |    ❌    |         | List of arguments to forward to the CLI tools as defined in [EasyBuild.ChangelogGen](https://github.com/easybuild-org/EasyBuild.ChangelogGen) |
+
+#### Returns
+
+`string` - new version generated based on the commits history
+
+#### Example
+
+```fs
+open EasyBuild.Tools.DotNet
+
+let newVersion = DotNet.changelogGen "CHANGELOG.md"
 ```
 
-If you are not sure what will be calculated, you can use the `--dry-run` option to see the result without writing it to the changelog file.
+</details>
 
-### Overriding the version
+<details>
+<summary>
+<code>DotNet.pack</code>
+- commit staged files with release message of format <code>chore: release {version}</code>
+</summary>
 
-If the computed version is not what you want, you can use the `--force-version` option to override the version to any value you want.
+#### Parameters
 
-```bash
-dotnet changelog-gen --force-version 2.0.0
+| name               | type            | required | default   | description            |
+| ------------------ | --------------- | :------: | --------- | ---------------------- |
+| `workingDirectory` | `string`        |    ❌    |           | Working directory path |
+| `configuration`    | `Configuration` |    ❌    | `Release` | Build configuration    |
+
+#### Returns
+
+`FileInfo` - file descriptor to the generated `.nupkg` file
+
+#### Example
+
+```fs
+open EasyBuild.Tools.DotNet
+
+let nupkgFile = DotNet.pack()
 ```
 
-## Monorepo support
+</details>
 
-EasyBuild.ChangelogGen supports monorepo. To do so, it use the `Tag` footer as specified in [EasyBuild.CommitParser](https://github.com/easybuild-org/EasyBuild.CommitParser).
+<details>
+<summary>
+<code>DotNet.nugetPush</code>
+- commit staged files with release message using conventional commit
+</summary>
 
-For example, if we have the following 3 commits:
+#### Parameters
 
-```text
-----------------------------------------------
-feat: add interface support
+| name            | type            | required | default                  | description                                                          |
+| --------------- | --------------- | :------: | ------------------------ | -------------------------------------------------------------------- |
+| `nupkgPath`     | `string`        |    ✅    |                          | Working directory path                                               |
+| `nugetKey`      | `Configuration` |    ❌    | `NUGET_KEY` env variable | NuGet API key                                                        |
+| `skipDuplicate` | `bool`          |    ❌    | `true`                   | If a package and version already exists, skip it                     |
+| `source`        | `string`        |    ❌    |                          | Package source (URL, UNC/folder path or package source name) to use. |
+| `forceEcho`     | `bool`          |    ❌    | `false`                  | Echo the                                                             |
 
-Tag: converter
-----------------------------------------------
-feat: add `export` support
+#### Returns
 
-Tag: converter
-----------------------------------------------
-feat: add new CLI options
+`unit`
 
-Tag: cli
-----------------------------------------------
+#### Example
+
+```fs
+open EasyBuild.Tools.DotNet
+
+// In general, you will get the nupkg file from DotNet.pack
+let nupkgFile = DotNet.pack()
+
+DotNet.nugetPush nupkgFile
+
+// Or you can customize it
+let nugetKey = Environment.GetEnvironmentVariable "NUGET_KEY_CUSTOM"
+DotNet.nugetPush (nupkgFile, nugetKey = nugetKey)
 ```
 
-Then I can run `dotnet changelog-gen src/converter/CHANGELOG.md --tag converter` to generate the changelog using only the commits with the `converter` tag.
-
-```bash
-dotnet changelog-gen src/converter/CHANGELOG.md --tag converter
-```
-
-## Exit codes
-
-- `0`: Success
-- `1`: Error
-- `100`: Help was requested (allow other tools to detect if help was requested). This is left to the user to decide if they want to treat this as an error or not.
+</details>
