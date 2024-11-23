@@ -97,6 +97,7 @@ Output:
             ?allowBranch: string list,
             ?tagFilter: string list,
             ?preRelease: string,
+            ?config: string,
             ?forceVersion: string,
             ?skipInvalidCommit: bool,
             ?dryRun: bool,
@@ -123,6 +124,7 @@ Output:
                 |> CmdLine.appendIf (defaultArg skipInvalidCommit false) "--skip-invalid-commit"
                 |> CmdLine.appendIf (defaultArg dryRun false) "--dry-run"
                 |> CmdLine.appendPrefixIfSome "--pre-release" preRelease
+                |> CmdLine.appendPrefixIfSome "--config" config
                 |> CmdLine.appendPrefixIfSome "--force-version" forceVersion
                 |> CmdLine.appendPrefixIfSome "--github-repo" githubRepo
                 |> CmdLine.appendPrefixesIfSome "--allow-branch" allowBranch
