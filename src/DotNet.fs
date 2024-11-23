@@ -12,6 +12,11 @@ module private CmdLine =
         | Some values -> cmdLine |> CmdLine.appendPrefixSeq prefix values
         | None -> cmdLine
 
+    let appendSeqIfSome (values: string list option) (cmdLine: CmdLine) =
+        match values with
+        | Some values -> cmdLine |> CmdLine.appendSeq values
+        | None -> cmdLine
+
 [<RequireQualifiedAccess>]
 type Configuration =
     | Debug
@@ -106,14 +111,6 @@ Output:
             ?forwardArguments: string list
         )
         =
-        let appendForwardArguments (cmdLine: CmdLine) =
-            match forwardArguments with
-            | Some args ->
-                let args = args |> String.concat " "
-
-                cmdLine |> CmdLine.appendRaw "--" |> CmdLine.appendRaw args
-            | None -> cmdLine
-
         let (struct (newVersion, _)) =
             Command.ReadAsync(
                 "dotnet",
@@ -129,7 +126,7 @@ Output:
                 |> CmdLine.appendPrefixIfSome "--github-repo" githubRepo
                 |> CmdLine.appendPrefixesIfSome "--allow-branch" allowBranch
                 |> CmdLine.appendPrefixesIfSome "--tag-filter" tagFilter
-                |> appendForwardArguments
+                |> CmdLine.appendSeqIfSome forwardArguments
                 |> CmdLine.toString,
                 ?workingDirectory = workingDirectory
             )
