@@ -1,4 +1,4 @@
-namespace EasyBuild.Tools.DotNet
+module EasyBuild.Tools.DotNet
 
 open SimpleExec
 open BlackFox.CommandLine

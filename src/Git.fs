@@ -1,4 +1,4 @@
-namespace EasyBuild.Tools.Git
+module EasyBuild.Tools.Git
 
 open SimpleExec
 open BlackFox.CommandLine

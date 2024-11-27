@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "EasyBuild.Tools", "src\EasyBuild.Tools.fsproj", "{191A2BCD-3E94-4B0B-815E-C6C8DB59C30F}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "EasyBuild.Tools.Tests", "tests\EasyBuild.Tools.Tests.fsproj", "{73649D79-86C8-48D6-8D17-CF939B444E60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{191A2BCD-3E94-4B0B-815E-C6C8DB59C30F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{191A2BCD-3E94-4B0B-815E-C6C8DB59C30F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{191A2BCD-3E94-4B0B-815E-C6C8DB59C30F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73649D79-86C8-48D6-8D17-CF939B444E60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73649D79-86C8-48D6-8D17-CF939B444E60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73649D79-86C8-48D6-8D17-CF939B444E60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73649D79-86C8-48D6-8D17-CF939B444E60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

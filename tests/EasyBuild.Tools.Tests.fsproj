@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <GenerateProgramFile>false</GenerateProgramFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Workspace.fs" />
+        <Compile Include="Utils.fs" />
+        <Compile Include="Changelog.fs" />
+        <Compile Include="Main.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\src\EasyBuild.Tools.fsproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EasyBuild.FileSystemProvider" />
+      <PackageReference Include="Expecto" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" />
+      <PackageReference Include="YoloDev.Expecto.TestSdk" />
+      <PackageReference Update="FSharp.Core" VersionOverride="8.0.401" />
+    </ItemGroup>
+
+</Project>
