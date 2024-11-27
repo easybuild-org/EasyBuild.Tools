@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Library</OutputType>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ChangelogFile>$(MSBuildThisFileDirectory)../CHANGELOG.md</ChangelogFile>
     </PropertyGroup>
     <ItemGroup>
@@ -10,6 +10,7 @@
         <Compile Include="DotNet.fs" />
         <Compile Include="Git.fs" />
         <Compile Include="Changelog.fs" />
+        <Compile Include="PackageJson.fs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -20,6 +21,7 @@
         </PackageReference>
         <PackageReference Include="FSharp.Core" />
         <PackageReference Include="SimpleExec" />
+        <PackageReference Include="System.Text.Json" />
     </ItemGroup>
 
 </Project>
