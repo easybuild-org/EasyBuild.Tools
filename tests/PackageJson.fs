@@ -68,4 +68,12 @@ let tests =
 
                 Expect.equal newContent expected
             }
+
+            test "PackageJson.getName works" {
+                let packageJsonFile = FileInfo Workspace.``package-json``.``standard.json``
+
+                let name = PackageJson.getName packageJsonFile
+
+                Expect.equal name "@glutinum/cli"
+            }
         ]

@@ -6,8 +6,12 @@ open System.IO
 
 type PackageJson =
 
-    static member replaceVersion(file: FileInfo, newVersion: string) =
+    static member inline private parseJson(file: FileInfo) =
         let rawText = File.ReadAllText(file.FullName)
+        JsonNode.Parse(rawText)
+
+    static member replaceVersion(file: FileInfo, newVersion: string) =
+        let json = PackageJson.parseJson file
         let json = JsonNode.Parse(rawText)
         json["version"] <- newVersion
 
@@ -22,3 +26,7 @@ type PackageJson =
         let newContent = JsonSerializer.Serialize(json, options)
 
         File.WriteAllText(file.FullName, newContent + "\n")
+
+    static member getName(file: FileInfo) =
+        let json = PackageJson.parseJson file
+        json["name"].GetValue<string>()
