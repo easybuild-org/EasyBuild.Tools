@@ -46,7 +46,10 @@ let tests =
                 [
                     test "throws NoVersionFound if no version is found" {
                         Expect.throwsT<NoVersionFound> (fun () ->
-                            Changelog.findLastVersion "" |> ignore
+                            Workspace.changelogs.``no_version.md``
+                            |> FileInfo
+                            |> Changelog.findLastVersion
+                            |> ignore
                         )
                     }
 
