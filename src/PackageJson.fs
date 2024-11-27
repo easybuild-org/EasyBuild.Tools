@@ -12,7 +12,6 @@ type PackageJson =
 
     static member replaceVersion(file: FileInfo, newVersion: string) =
         let json = PackageJson.parseJson file
-        let json = JsonNode.Parse(rawText)
         json["version"] <- newVersion
 
         let options =
@@ -30,3 +29,7 @@ type PackageJson =
     static member getName(file: FileInfo) =
         let json = PackageJson.parseJson file
         json["name"].GetValue<string>()
+
+    static member getVersion(file: FileInfo) =
+        let json = PackageJson.parseJson file
+        json["version"].GetValue<string>()

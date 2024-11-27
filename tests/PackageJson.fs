@@ -76,4 +76,12 @@ let tests =
 
                 Expect.equal name "@glutinum/cli"
             }
+
+            test "PackageJson.getVersion works" {
+                let packageJsonFile = FileInfo Workspace.``package-json``.``standard.json``
+
+                let version = PackageJson.getVersion packageJsonFile
+
+                Expect.equal version "0.1.0"
+            }
         ]
