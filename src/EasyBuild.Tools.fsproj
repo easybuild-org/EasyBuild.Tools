@@ -6,6 +6,7 @@
         <ChangelogFile>$(MSBuildThisFileDirectory)../CHANGELOG.md</ChangelogFile>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="Extensions/BlackFox.CommandLine.fs" />
         <Compile Include="DotNet.fs" />
         <Compile Include="Git.fs" />
         <Compile Include="Changelog.fs" />
