@@ -11,6 +11,7 @@
         <Compile Include="Git.fs" />
         <Compile Include="Changelog.fs" />
         <Compile Include="PackageJson.fs" />
+        <Compile Include="Npm.fs" />
     </ItemGroup>
 
     <ItemGroup>
