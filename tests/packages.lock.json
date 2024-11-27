@@ -103,7 +103,7 @@
         "type": "Project",
         "dependencies": {
           "BlackFox.CommandLine": "[1.0.0, )",
-          "FSharp.Core": "[5.0.2, )",
+          "FSharp.Core": "[6.0.0, )",
           "SimpleExec": "[12.0.0, )",
           "System.Text.Json": "[9.0.0, )"
         }
@@ -119,7 +119,7 @@
       },
       "FSharp.Core": {
         "type": "CentralTransitive",
-        "requested": "[5.0.2, )",
+        "requested": "[6.0.0, )",
         "resolved": "7.0.200",
         "contentHash": "NmgUnpNH6Zu9B0SPIhojyo38gnPdkdYFYQfbd6zosEH32kbGY/g/Klk7PfOWe1NAe/O1YOMmK9KhwQ2OWsWEbg=="
       },

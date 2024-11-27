@@ -84,4 +84,31 @@ let tests =
 
                 Expect.equal version "0.1.0"
             }
+
+            test "PackageJson.needPublishing return true if the package is not published" {
+                let packageJsonFile =
+                    FileInfo Workspace.``package-json``.``package-dont-exist.json``
+
+                let needsPublishing = PackageJson.needPublishing packageJsonFile
+
+                Expect.equal needsPublishing true
+            }
+
+            test
+                "PackageJson.needPublishing return true if the package is published but not that specific version" {
+                let packageJsonFile =
+                    FileInfo Workspace.``package-json``.``version-not-published.json``
+
+                let needsPublishing = PackageJson.needPublishing packageJsonFile
+
+                Expect.equal needsPublishing true
+            }
+
+            test "PackageJson.needPublishing return false if the package is published" {
+                let packageJsonFile = FileInfo Workspace.``package-json``.``standard.json``
+
+                let needsPublishing = PackageJson.needPublishing packageJsonFile
+
+                Expect.equal needsPublishing false
+            }
         ]
