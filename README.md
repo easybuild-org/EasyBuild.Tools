@@ -195,3 +195,98 @@ DotNet.nugetPush (nupkgFile, nugetKey = nugetKey)
 ```
 
 </details>
+
+### `PackageJson`
+
+<details>
+<summary>
+<code>PackageJson.replaceVersion</code>
+- replace version in NPM <code>package.json</code> file
+</code>
+</summary>
+
+#### Parameters
+
+| name         | type       | required | default | description        |
+| ------------ | ---------- | :------: | ------- | ------------------ |
+| `file`       | `FileInfo` |    ✅    |         | File to update     |
+| `newVersion` | `string`   |    ✅    |         | New version to set |
+
+#### Returns
+
+`unit`
+
+#### Example
+
+```fs
+open EasyBuild.Tools.PackageJson
+
+let packageJsonFile = FileInfo "package.json"
+PackageJson.replaceVersion packageJsonFile "1.0.0"
+```
+
+</details>
+
+### `Changelog`
+
+<details>
+<summary>
+<code>PackageJson.tryFindLastVersion</code>
+- try to find the last version in a CHANGELOG file
+</code>
+</summary>
+
+#### Parameters
+
+| name            | type       | required | default | description        |
+| --------------- | ---------- | :------: | ------- | ------------------ |
+| `changelogFile` | `FileInfo` |    ✅    |         | File to update     |
+
+#### Returns
+
+`string option` - `Some` with the last version or `None` if not found
+
+#### Example
+
+```fs
+open EasyBuild.Tools.Changelog
+
+let lastVersion =
+    "CHANGELOG.md"
+    |> FileInfo
+    |> Changelog.tryFindLastVersion
+```
+
+</details>
+
+<details>
+<summary>
+<code>PackageJson.findLastVersion</code>
+- find the last version in a CHANGELOG file or throw an exception
+</code>
+</summary>
+
+#### Parameters
+
+| name            | type       | required | default | description        |
+| --------------- | ---------- | :------: | ------- | ------------------ |
+| `changelogFile` | `FileInfo` |    ✅    |         | File to update     |
+
+#### Returns
+
+`string` - the last version
+
+If the version is not found, it will throw an exception of type `NoVersionFound`.
+
+#### Example
+
+```fs
+open EasyBuild.Tools.Changelog
+
+let lastVersion =
+    "CHANGELOG.md"
+    |> FileInfo
+    |> Changelog.findLastVersion
+```
+
+</details>
