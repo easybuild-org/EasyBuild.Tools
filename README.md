@@ -104,18 +104,18 @@ Git.push()
 
 #### Parameters
 
-| name                | type          | required | default | description                                                                                                                                    |
-| ------------------- | ------------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `changelogFile`     | `string`      |    ✅    |         |                                                                                                                                                |
-| `allowDirty`        | `bool`        |    ❌    |         | Allow to run in a dirty repository                                                                                                             |
-| `allowBranch`       | `string list` |    ❌    | `main`  | List of branches that are allowed to be used to generate the changelog.                                                                        |
-| `tagFilter`         | `string list` |    ❌    |         | List of tags to include in the changelog                                                                                                       |
-| `preRelease`        | `string`      |    ❌    |         | Indicate that the generated version is a pre-release version.                                                                                  |
-| `forceVersion`      | `string`      |    ❌    |         | Force the version to be used in the changelog                                                                                                  |
-| `skipInvalidCommit` | `bool`        |    ❌    |         | Skip invalid commits instead of failing                                                                                                        |
-| `dryRun`            | `bool`        |    ❌    |         | Run the command without writing to the changelog file, output the result in STDOUT instead                                                     |
-| `githubRepo`        | `string`      |    ❌    |         | GitHub repository name in format 'owner/repo'                                                                                                  |
-| `workingDirectory`  | `string`      |    ❌    |         | Working directory path                                                                                                                         |
+| name                | type          | required | default | description                                                                                                                                   |
+| ------------------- | ------------- | :------: | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `changelogFile`     | `string`      |    ✅    |         |                                                                                                                                               |
+| `allowDirty`        | `bool`        |    ❌    |         | Allow to run in a dirty repository                                                                                                            |
+| `allowBranch`       | `string list` |    ❌    | `main`  | List of branches that are allowed to be used to generate the changelog.                                                                       |
+| `tagFilter`         | `string list` |    ❌    |         | List of tags to include in the changelog                                                                                                      |
+| `preRelease`        | `string`      |    ❌    |         | Indicate that the generated version is a pre-release version.                                                                                 |
+| `forceVersion`      | `string`      |    ❌    |         | Force the version to be used in the changelog                                                                                                 |
+| `skipInvalidCommit` | `bool`        |    ❌    |         | Skip invalid commits instead of failing                                                                                                       |
+| `dryRun`            | `bool`        |    ❌    |         | Run the command without writing to the changelog file, output the result in STDOUT instead                                                    |
+| `githubRepo`        | `string`      |    ❌    |         | GitHub repository name in format 'owner/repo'                                                                                                 |
+| `workingDirectory`  | `string`      |    ❌    |         | Working directory path                                                                                                                        |
 | `forwardArguments`  | `string list` |    ❌    |         | List of arguments to forward to the CLI tools as defined in [EasyBuild.ChangelogGen](https://github.com/easybuild-org/EasyBuild.ChangelogGen) |
 
 #### Returns
@@ -167,13 +167,103 @@ let nupkgFile = DotNet.pack()
 
 #### Parameters
 
-| name            | type            | required | default                  | description                                                          |
-| --------------- | --------------- | :------: | ------------------------ | -------------------------------------------------------------------- |
-| `nupkgPath`     | `string`        |    ✅    |                          | Working directory path                                               |
-| `nugetKey`      | `Configuration` |    ❌    | `NUGET_KEY` env variable | NuGet API key                                                        |
-| `skipDuplicate` | `bool`          |    ❌    | `true`                   | If a package and version already exists, skip it                     |
-| `source`        | `string`        |    ❌    |                          | Package source (URL, UNC/folder path or package source name) to use. |
-| `forceEcho`     | `bool`          |    ❌    | `false`                  | Echo the                                                             |
+<table>
+   <thead>
+      <tr>
+         <th>name</th>
+         <th>type</th>
+         <th align="center">required</th>
+         <th>default</th>
+         <th>description</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><code>nupkgPath</code></td>
+         <td><code>string</code></td>
+         <td align="center">✅</td>
+         <td></td>
+         <td>Working directory path</td>
+      </tr>
+      <tr>
+         <td><code>forceEnglishOutput</code></td>
+         <td><code>bool</code></td>
+         <td align="center">❌</td>
+         <td><code>false</code></td>
+         <td>Forces the application to run using an invariant, English-based culture</td>
+      </tr>
+      <tr>
+         <td><code>source</code></td>
+         <td><code>string</code></td>
+         <td align="center">❌</td>
+         <td><code>https://api.nuget.org/v3/index.json</code></td>
+         <td>Package source (URL, UNC/folder path or package source name) to use.</td>
+      </tr>
+      <tr>
+         <td><code>symbolSource</code></td>
+         <td><code>string</code></td>
+         <td align="center">❌</td>
+         <td></td>
+         <td>Symbol server URL to use</td>
+      </tr>
+      <tr>
+         <td><code>timeout</code></td>
+         <td><code>int</code></td>
+         <td align="center">❌</td>
+         <td><code>300</code> (5 minutes)</td>
+         <td>Timeout for pushing to a server in seconds</td>
+      </tr>
+      <tr>
+         <td><code>apiKey</code></td>
+         <td><code>string</code></td>
+         <td align="center">❌</td>
+         <td><code>NUGET_KEY</code> env variable</td>
+         <td>The API key for the server</td>
+      </tr>
+      <tr>
+         <td><code>symbolApiKey</code></td>
+         <td><code>string</code></td>
+         <td align="center">❌</td>
+         <td><code>NUGET_SYMBOL_KEY</code> env variable if presents otherwise we don't provide the argument</td>
+         <td>The API key for the symbol server</td>
+      </tr>
+      <tr>
+         <td><code>disableBuffering</code></td>
+         <td><code>bool</code></td>
+         <td align="center">❌</td>
+         <td><code>false</code></td>
+         <td>Disable buffering when pushing to an HTTP(S) server to decrease memory usage</td>
+      </tr>
+      <tr>
+         <td><code>noSymbols</code></td>
+         <td><code>bool</code></td>
+         <td align="center">❌</td>
+         <td><code>false</code></td>
+         <td>If a symbols package exists, it will not be pushed to a symbols server</td>
+      </tr>
+      <tr>
+         <td><code>interactive</code></td>
+         <td><code>bool</code></td>
+         <td align="center">❌</td>
+         <td><code>false</code></td>
+         <td>Allow the command to block and require manual action for operations like authentication</td>
+      </tr>
+      <tr>
+         <td><code>skipDuplicate</code></td>
+         <td><code>bool</code></td>
+         <td align="center">❌</td>
+         <td><code>false</code></td>
+         <td>If a package and version already exists, skip it and continue with the next package in the push, if any</td>
+      </tr>
+      <tr>
+         <td><code>forceEcho</code></td>
+         <td><code>bool</code></td>
+         <td align="center">❌</td>
+         <td><code>false</code></td>
+         <td>Echo the command and command output</td>
+      </tr>
+   </tbody>
+</table>
 
 #### Returns
 
@@ -238,9 +328,9 @@ PackageJson.replaceVersion packageJsonFile "1.0.0"
 
 #### Parameters
 
-| name            | type       | required | default | description        |
-| --------------- | ---------- | :------: | ------- | ------------------ |
-| `changelogFile` | `FileInfo` |    ✅    |         | File to update     |
+| name            | type       | required | default | description    |
+| --------------- | ---------- | :------: | ------- | -------------- |
+| `changelogFile` | `FileInfo` |    ✅    |         | File to update |
 
 #### Returns
 
@@ -268,9 +358,9 @@ let lastVersion =
 
 #### Parameters
 
-| name            | type       | required | default | description        |
-| --------------- | ---------- | :------: | ------- | ------------------ |
-| `changelogFile` | `FileInfo` |    ✅    |         | File to update     |
+| name            | type       | required | default | description    |
+| --------------- | ---------- | :------: | ------- | -------------- |
+| `changelogFile` | `FileInfo` |    ✅    |         | File to update |
 
 #### Returns
 

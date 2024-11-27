@@ -47,16 +47,22 @@ Output:
     static member nugetPush
         (
             nupkgPath: FileInfo,
-            ?nugetKey: string,
-            ?skipDuplicate: bool,
+            ?forceEnglishOutput: bool,
             ?source: string,
+            ?symbolSource: string,
+            ?timeout: int,
+            ?apiKey: string,
+            ?symbolApiKey: string,
+            ?disableBuffering: bool,
+            ?noSymbols: bool,
+            ?interactive: bool,
+            ?skipDuplicate: bool,
             ?forceEcho: bool
         )
         =
-        let skipDuplicate = defaultArg skipDuplicate true
 
-        let nugetKey =
-            match nugetKey with
+        let apiKey =
+            match apiKey with
             | Some k -> k
             | None ->
                 let key = System.Environment.GetEnvironmentVariable("NUGET_KEY")
@@ -67,7 +73,25 @@ Output:
                 else
                     key
 
+        let symbolApiKey =
+            match symbolApiKey with
+            | Some k -> Some k
+            | None ->
+                let key = System.Environment.GetEnvironmentVariable("NUGET_SYMBOL_KEY")
+
+                if isNull key then
+                    None
+                else
+                    Some key
+
         let source = defaultArg source "https://api.nuget.org/v3/index.json"
+
+        let timeout = timeout |> Option.map string
+        let forceEnglishOutput = defaultArg forceEnglishOutput false
+        let disableBuffering = defaultArg disableBuffering false
+        let noSymbols = defaultArg noSymbols false
+        let interactive = defaultArg interactive false
+        let skipDuplicate = defaultArg skipDuplicate false
 
         Command.Run(
             "dotnet",
@@ -75,8 +99,15 @@ Output:
             |> CmdLine.appendRaw "nuget"
             |> CmdLine.appendRaw "push"
             |> CmdLine.appendRaw nupkgPath.FullName
-            |> CmdLine.appendPrefix "--api-key" nugetKey
+            |> CmdLine.appendIf forceEnglishOutput "--force-english-output"
             |> CmdLine.appendPrefix "--source" source
+            |> CmdLine.appendPrefixIfSome "--symbol-source" symbolSource
+            |> CmdLine.appendPrefixIfSome "--timeout" timeout
+            |> CmdLine.appendPrefix "--api-key" apiKey
+            |> CmdLine.appendPrefixIfSome "--symbol-api-key" symbolApiKey
+            |> CmdLine.appendIf disableBuffering "--disable-buffering"
+            |> CmdLine.appendIf noSymbols "--no-symbols"
+            |> CmdLine.appendIf interactive "--interactive"
             |> CmdLine.appendIf skipDuplicate "--skip-duplicate"
             |> CmdLine.toString,
             // Do not echo the command because it contains the NuGet key
