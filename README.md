@@ -515,7 +515,6 @@ let lastVersion =
 
 </details>
 
-
 ### `Npm`
 
 <details>
@@ -571,6 +570,49 @@ let lastVersion =
 open EasyBuild.Tools.Npm
 
 Npm.publish "path/to/project"
+```
+
+</details>
+
+<details>
+<summary>
+<code>Npm.install</code>
+- install the package dependencies
+</summary>
+
+#### Parameters
+
+<table>
+   <thead>
+      <tr>
+         <th>name</th>
+         <th>type</th>
+         <th align="center">required</th>
+         <th>default</th>
+         <th>description</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><code>projectDirectory</code></td>
+         <td><code>string</code></td>
+         <td align="center">✅</td>
+         <td></td>
+         <td>Project directory path</td>
+      </tr>
+   </tbody>
+</table>
+
+#### Returns
+
+`unit`
+
+#### Example
+
+```fs
+open EasyBuild.Tools.Npm
+
+Npm.install "path/to/project"
 ```
 
 </details>

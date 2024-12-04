@@ -22,3 +22,6 @@ type Npm =
             |> CmdLine.toString,
             workingDirectory = projectDir
         )
+
+    static member install(projectDir: string) =
+        Command.Run("npm", "install", workingDirectory = projectDir)
