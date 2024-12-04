@@ -143,8 +143,8 @@ Output:
                 |> CmdLine.appendPrefixIfSome "--config" config
                 |> CmdLine.appendPrefixIfSome "--force-version" forceVersion
                 |> CmdLine.appendPrefixIfSome "--github-repo" githubRepo
-                |> CmdLine.appendPrefixesIfSome "--allow-branch" allowBranch
-                |> CmdLine.appendPrefixesIfSome "--tag" tagFilter
+                |> CmdLine.appendPrefixSeqIfSome "--allow-branch" allowBranch
+                |> CmdLine.appendPrefixSeqIfSome "--tag" tagFilter
                 |> CmdLine.appendSeqIfSome forwardArguments
                 |> CmdLine.toString,
                 ?workingDirectory = workingDirectory
