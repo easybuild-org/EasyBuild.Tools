@@ -8,6 +8,7 @@
     <ItemGroup>
         <Compile Include="Extensions/BlackFox.CommandLine.fs" />
         <Compile Include="DotNet.fs" />
+        <Compile Include="Fable.fs" />
         <Compile Include="Git.fs" />
         <Compile Include="Npm.fs" />
         <Compile Include="PackageJson.fs" />
