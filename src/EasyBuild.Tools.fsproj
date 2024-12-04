@@ -12,6 +12,7 @@
         <Compile Include="Changelog.fs" />
         <Compile Include="PackageJson.fs" />
         <Compile Include="Npm.fs" />
+        <Compile Include="Vite.fs" />
     </ItemGroup>
 
     <ItemGroup>
