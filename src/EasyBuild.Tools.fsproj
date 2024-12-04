@@ -11,7 +11,7 @@
         <Compile Include="Git.fs" />
         <Compile Include="Changelog.fs" />
         <Compile Include="PackageJson.fs" />
-        <Compile Include="Npm.fs" />
+        <Compile Include="Vercel.fs" />
         <Compile Include="Vite.fs" />
     </ItemGroup>
 
