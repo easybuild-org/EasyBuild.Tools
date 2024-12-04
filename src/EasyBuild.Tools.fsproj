@@ -12,6 +12,7 @@
         <Compile Include="Fable.fs" />
         <Compile Include="FableCssModules.fs" />
         <Compile Include="Git.fs" />
+        <Compile Include="Nodemon.fs" />
         <Compile Include="Npm.fs" />
         <Compile Include="PackageJson.fs" />
         <Compile Include="Vercel.fs" />
