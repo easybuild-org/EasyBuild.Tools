@@ -7,8 +7,10 @@
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Extensions/BlackFox.CommandLine.fs" />
+        <Compile Include="Changelog.fs" />
         <Compile Include="DotNet.fs" />
         <Compile Include="Fable.fs" />
+        <Compile Include="FableCssModules.fs" />
         <Compile Include="Git.fs" />
         <Compile Include="Npm.fs" />
         <Compile Include="PackageJson.fs" />
