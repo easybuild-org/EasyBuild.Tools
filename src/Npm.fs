@@ -23,5 +23,5 @@ type Npm =
             workingDirectory = projectDir
         )
 
-    static member install(projectDir: string) =
-        Command.Run("npm", "install", workingDirectory = projectDir)
+    static member install(?workingDirectory: string) =
+        Command.Run("npm", "install", ?workingDirectory = workingDirectory)

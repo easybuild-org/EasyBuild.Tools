@@ -9,7 +9,7 @@
         <Compile Include="Extensions/BlackFox.CommandLine.fs" />
         <Compile Include="DotNet.fs" />
         <Compile Include="Git.fs" />
-        <Compile Include="Changelog.fs" />
+        <Compile Include="Npm.fs" />
         <Compile Include="PackageJson.fs" />
         <Compile Include="Vercel.fs" />
         <Compile Include="Vite.fs" />
