@@ -49,7 +49,8 @@ pipeline "update-docs" {
     stage "Update README.md" {
         run "dotnet mdsnippets --read-only true"
         run "git add README.md"
-        run "git commit -m 'chore: update README.md'"
+        run "git add README.source.md"
+        run "git commit -m \"chore: update README.md\""
         run "git push"
     }
 
