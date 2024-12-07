@@ -2,11 +2,13 @@ module EasyBuild.Tools.Nodemon
 
 open SimpleExec
 open BlackFox.CommandLine
+open System.Threading.Tasks
 
 type Nodemon =
 
     static member runAsync
         // Arguments list taken from: npx nodemon --help options
+        // begin-snippet: Nodemon.runAsync
         (
             // Configuration
             ?config: string,
@@ -33,6 +35,8 @@ type Nodemon =
             ?verbose: bool,
             ?workingDirectory: string
         )
+        : Task
+        // end-snippet
         =
 
         let appendYourArgs (cmdLine: CmdLine) =
@@ -79,8 +83,9 @@ type Nodemon =
         )
 
     static member run
+        // Arguments list taken from: npx nodemon --help options
+        // begin-snippet: Nodemon.run
         (
-            // Arguments list taken from: npx nodemon --help options
             // Configuration
             ?config: string,
             ?exitCrash: bool,
@@ -106,7 +111,8 @@ type Nodemon =
             ?verbose: bool,
             ?workingDirectory: string
         )
-
+        : unit
+        // end-snippet
         =
 
         Nodemon.runAsync (

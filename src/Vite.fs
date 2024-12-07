@@ -2,6 +2,7 @@ module EasyBuild.Tools.Vite
 
 open SimpleExec
 open BlackFox.CommandLine
+open System.Threading.Tasks
 
 [<RequireQualifiedAccess>]
 module Vite =
@@ -68,6 +69,7 @@ module Vite =
 type Vite =
 
     static member build
+        // begin-snippet: Vite.build
         (
             ?target: string,
             ?outDir: string,
@@ -89,6 +91,7 @@ type Vite =
             ?mode: string,
             ?workingDirectory: string
         )
+        // end-snippet
         =
 
         let appendSourceMap (cmdLine: CmdLine) =
@@ -185,6 +188,7 @@ type Vite =
         )
 
     static member watch
+        // begin-snippet: Vite.watch
         (
             ?host: string,
             ?port: int,
@@ -201,6 +205,8 @@ type Vite =
             ?mode: string,
             ?workingDirectory: string
         )
+        : Task
+        // end-snippet
         =
 
         let appendOpen (cmdLine: CmdLine) =

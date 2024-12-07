@@ -45,10 +45,23 @@ pipeline "test" {
     runIfOnlySpecified
 }
 
+pipeline "update-docs" {
+    stage "Update README.md" {
+        run "dotnet mdsnippets --read-only true"
+        run "git add README.md"
+        run "git commit -m 'chore: update README.md'"
+        run "git push"
+    }
+
+    runIfOnlySpecified
+}
+
 pipeline "release" {
     whenEnvVar options.NUGET_KEY
 
     Stages.test
+
+    stage "Update README.md" { run "dotnet mdsnippets --read-only true" }
 
     stage "Pack and publish" {
         run (fun _ ->

@@ -6,7 +6,11 @@ open BlackFox.CommandLine
 
 type Npm =
 
-    static member publish(projectDir: string, ?tag: string, ?isRestricted: bool) =
+    static member publish
+        // begin-snippet: Npm.publish
+        (projectDir: string, ?tag: string, ?isRestricted: bool)
+        // end-snippet
+        =
         let access =
             match isRestricted with
             | Some true -> "restricted"
@@ -23,5 +27,9 @@ type Npm =
             workingDirectory = projectDir
         )
 
-    static member install(?workingDirectory: string) =
+    static member install
+        // begin-snippet: Npm.install
+        (?workingDirectory: string)
+        // end-snippet
+        =
         Command.Run("npm", "install", ?workingDirectory = workingDirectory)

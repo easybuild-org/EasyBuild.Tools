@@ -13,7 +13,12 @@ type Configuration =
 
 type DotNet =
 
-    static member pack(?workingDirectory: string, ?configuration: Configuration) =
+    static member pack
+        // begin-snippet: DotNet.pack
+        (?workingDirectory: string, ?configuration: Configuration)
+        : FileInfo
+        // end-snippet
+        =
         let configuration =
             defaultArg configuration Configuration.Release
             |> function
@@ -45,6 +50,7 @@ Output:
 {standardOutput}"""
 
     static member nugetPush
+        // begin-snippet: DotNet.nugetPush
         (
             nupkgPath: FileInfo,
             ?forceEnglishOutput: bool,
@@ -59,6 +65,7 @@ Output:
             ?skipDuplicate: bool,
             ?forceEcho: bool
         )
+        // end-snippet
         =
 
         let apiKey =
@@ -115,6 +122,7 @@ Output:
         )
 
     static member changelogGen
+        // begin-snippet: DotNet.changelogGen
         (
             changelogFile: string,
             ?allowDirty: bool,
@@ -129,6 +137,8 @@ Output:
             ?workingDirectory: string,
             ?forwardArguments: string list
         )
+        : string
+        // end-snippet
         =
         let (struct (newVersion, _)) =
             Command.ReadAsync(

@@ -11,7 +11,11 @@ type PackageJson =
         let rawText = File.ReadAllText(file.FullName)
         JsonNode.Parse(rawText)
 
-    static member replaceVersion(file: FileInfo, newVersion: string) =
+    static member replaceVersion
+        // begin-snippet: PackageJson.replaceVersion
+        (file: FileInfo, newVersion: string)
+        // end-snippet
+        =
         let json = PackageJson.parseJson file
         json["version"] <- newVersion
 
@@ -27,11 +31,19 @@ type PackageJson =
 
         File.WriteAllText(file.FullName, newContent + "\n")
 
-    static member getName(file: FileInfo) =
+    static member getName
+        // begin-snippet: PackageJson.getName
+        (file: FileInfo)
+        // end-snippet
+        =
         let json = PackageJson.parseJson file
         json["name"].GetValue<string>()
 
-    static member getVersion(file: FileInfo) =
+    static member getVersion
+        // begin-snippet: PackageJson.getVersion
+        (file: FileInfo)
+        // end-snippet
+        =
         let json = PackageJson.parseJson file
         json["version"].GetValue<string>()
 
@@ -40,7 +52,12 @@ type PackageJson =
     /// </summary>
     /// <param name="packageJson">The package.json file</param>
     /// <returns><c>true</c> if the package needs to be published, <c>false</c> otherwise</returns>
-    static member needPublishing(packageJson: FileInfo) =
+    static member needPublishing
+        // begin-snippet: PackageJson.needPublishing
+        (packageJson: FileInfo)
+        : bool
+        // end-snippet
+        =
         let packageName = PackageJson.getName packageJson
         let packageVersion = PackageJson.getVersion packageJson
 

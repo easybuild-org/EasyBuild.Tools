@@ -5,9 +5,18 @@ open BlackFox.CommandLine
 
 type Git =
 
-    static member addAll() = Command.Run("git", "add --all")
+    static member addAll
+        // begin-snippet: Git.addAll
+        ()
+        // end-snippet
+        =
+        Command.Run("git", "add --all")
 
-    static member commitRelease(newVersion: string) =
+    static member commitRelease
+        // begin-snippet: Git.commitRelease
+        (newVersion: string)
+        // end-snippet
+        =
         Command.Run(
             "git",
             CmdLine.empty
@@ -16,7 +25,11 @@ type Git =
             |> CmdLine.toString
         )
 
-    static member push(?force: bool) =
+    static member push
+        // begin-snippet: Git.push
+        (?force: bool)
+        // end-snippet
+        =
         Command.Run(
             "git",
             CmdLine.empty

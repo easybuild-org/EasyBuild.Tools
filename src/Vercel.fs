@@ -28,6 +28,7 @@ module Advanced =
 type Vercel =
 
     static member pull
+        // begin-snippet: Vercel.pull
         (
             ?environment: string,
             ?gitBranch: string,
@@ -40,6 +41,7 @@ type Vercel =
             ?token: string,
             ?workingDirectory: string
         )
+        // end-snippet
         =
 
         let globalOptions: Advanced.GlobalOptions =
@@ -66,6 +68,7 @@ type Vercel =
         )
 
     static member build
+        // begin-snippet: Vercel.build
         (
             ?output: string,
             ?prod: bool,
@@ -78,7 +81,7 @@ type Vercel =
             ?token: string,
             ?workingDirectory: string
         )
-
+        // end-snippet
         =
 
         let globalOptions: Advanced.GlobalOptions =
@@ -105,6 +108,7 @@ type Vercel =
         )
 
     static member deploy
+        // begin-snippet: Vercel.deploy
         (
             ?archive: string,
             ?buildEnv: string,
@@ -127,6 +131,7 @@ type Vercel =
             ?token: string,
             ?workingDirectory: string
         )
+        // end-snippet
         =
 
         let globalOptions: Advanced.GlobalOptions =

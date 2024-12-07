@@ -13,7 +13,11 @@ type Changelog =
     /// <param name="changelogFile">The changelog file to read</param>
     /// <returns>
     /// <c>Some</c> with the last version found in the changelog, or <c>None</c> if no version is found.
-    static member tryFindLastVersion(changelogFile: FileInfo) =
+    static member tryFindLastVersion
+        // begin-snippet: Changelog.tryFindLastVersion
+        (changelogFile: FileInfo)
+        // end-snippet
+        =
         let content = File.ReadAllText(changelogFile.FullName)
 
         let m =
@@ -36,7 +40,11 @@ type Changelog =
     /// The last version found in the changelog.
     /// </returns>
     /// <exception cref="NoVersionFound">Thrown when no version is found in the changelog.</exception>
-    static member findLastVersion(changelogFile: FileInfo) =
+    static member findLastVersion
+        // begin-snippet: Changelog.findLastVersion
+        (changelogFile: FileInfo)
+        // end-snippet
+        =
         match Changelog.tryFindLastVersion (changelogFile) with
         | Some(version) -> version
         | None -> raise NoVersionFound

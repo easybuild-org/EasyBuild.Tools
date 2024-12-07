@@ -25,6 +25,12 @@
       "commands": [
         "husky"
       ]
+    },
+    "markdownsnippets.tool": {
+      "version": "27.0.2",
+      "commands": [
+        "mdsnippets"
+      ]
     }
   }
 }

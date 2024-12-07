@@ -2,6 +2,7 @@ module EasyBuild.Tools.Fable
 
 open SimpleExec
 open BlackFox.CommandLine
+open System.Threading.Tasks
 
 [<RequireQualifiedAccess>]
 module Fable =
@@ -17,6 +18,7 @@ module Fable =
 type Fable =
 
     static member build
+        // begin-snippet: Fable.build
         (
             ?projFileOrDir: string,
             ?outDir: string,
@@ -37,6 +39,8 @@ type Fable =
             ?lang: Fable.Lang,
             ?workingDirectory: string
         )
+        : unit
+        // end-snippet
         =
 
         let lang =
@@ -75,6 +79,7 @@ type Fable =
         )
 
     static member watch
+        // begin-snippet: Fable.watch
         (
             ?projFileOrDir: string,
             ?outDir: string,
@@ -96,6 +101,8 @@ type Fable =
             ?lang: Fable.Lang,
             ?workingDirectory: string
         )
+        : Task
+        // end-snippet
         =
 
         let lang =
