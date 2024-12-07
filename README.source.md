@@ -119,7 +119,7 @@ snippet: Fable.watch
 <details>
 <summary>
 <code>FableCssModules.runAsync</code>
-- run [fable-css-modules](https://www.npmjs.com/package/fable-css-modules) in async mode
+- run <a href="https://www.npmjs.com/package/fable-css-modules">fable-css-modules</a> in async mode
 </summary>
 
 snippet: FableCssModules.runAsync
@@ -129,7 +129,7 @@ snippet: FableCssModules.runAsync
 <details>
 <summary>
 <code>FableCssModules.run</code>
-- run [fable-css-modules](https://www.npmjs.com/package/fable-css-modules)
+- run <a href="https://www.npmjs.com/package/fable-css-modules">fable-css-modules</a>
 </summary>
 
 snippet: FableCssModules.run
@@ -173,7 +173,7 @@ snippet: Git.push
 <details>
 <summary>
 <code>Nodemon.runAsync</code>
-- run [nodemon](https://www.npmjs.com/package/nodemon) in async mode
+- run <a href="https://www.npmjs.com/package/nodemon">nodemon</a> in async mode
 </summary>
 
 snippet: Nodemon.runAsync
@@ -183,7 +183,7 @@ snippet: Nodemon.runAsync
 <details>
 <summary>
 <code>Nodemon.run</code>
-- run [nodemon](https://www.npmjs.com/package/nodemon)
+- run <a href="https://www.npmjs.com/package/nodemon">nodemon</a>
 </summary>
 
 snippet: Nodemon.run

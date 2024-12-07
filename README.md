@@ -201,9 +201,10 @@ let newVersion = DotNet.changelogGen "CHANGELOG.md"
     ?exclude: string list,
     ?lang: Fable.Lang,
     ?workingDirectory: string
-) : unit
+)
+: unit
 ```
-<sup><a href='/src/Fable.fs#L21-L42' title='Snippet source file'>snippet source</a> | <a href='#snippet-Fable.build' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Fable.fs#L21-L43' title='Snippet source file'>snippet source</a> | <a href='#snippet-Fable.build' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -237,9 +238,10 @@ let newVersion = DotNet.changelogGen "CHANGELOG.md"
     ?exclude: string list,
     ?lang: Fable.Lang,
     ?workingDirectory: string
-) : Task
+)
+: Task
 ```
-<sup><a href='/src/Fable.fs#L81-L103' title='Snippet source file'>snippet source</a> | <a href='#snippet-Fable.watch' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Fable.fs#L82-L105' title='Snippet source file'>snippet source</a> | <a href='#snippet-Fable.watch' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -249,7 +251,7 @@ let newVersion = DotNet.changelogGen "CHANGELOG.md"
 <details>
 <summary>
 <code>FableCssModules.runAsync</code>
-- run [fable-css-modules](https://www.npmjs.com/package/fable-css-modules) in async mode
+- run <a href="https://www.npmjs.com/package/fable-css-modules">fable-css-modules</a> in async mode
 </summary>
 
 <!-- snippet: FableCssModules.runAsync -->
@@ -266,7 +268,7 @@ let newVersion = DotNet.changelogGen "CHANGELOG.md"
 <details>
 <summary>
 <code>FableCssModules.run</code>
-- run [fable-css-modules](https://www.npmjs.com/package/fable-css-modules)
+- run <a href="https://www.npmjs.com/package/fable-css-modules">fable-css-modules</a>
 </summary>
 
 <!-- snippet: FableCssModules.run -->
@@ -335,7 +337,7 @@ let newVersion = DotNet.changelogGen "CHANGELOG.md"
 <details>
 <summary>
 <code>Nodemon.runAsync</code>
-- run [nodemon](https://www.npmjs.com/package/nodemon) in async mode
+- run <a href="https://www.npmjs.com/package/nodemon">nodemon</a> in async mode
 </summary>
 
 <!-- snippet: Nodemon.runAsync -->
@@ -377,7 +379,7 @@ let newVersion = DotNet.changelogGen "CHANGELOG.md"
 <details>
 <summary>
 <code>Nodemon.run</code>
-- run [nodemon](https://www.npmjs.com/package/nodemon)
+- run <a href="https://www.npmjs.com/package/nodemon">nodemon</a>
 </summary>
 
 <!-- snippet: Nodemon.run -->
