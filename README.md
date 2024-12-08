@@ -19,6 +19,7 @@ Tool for generating changelog based on Git history based on [Conventional Commit
   * [Installation](#installation)
   * [APIs](#apis)
     * [`Changelog`](#changelog)
+    * [`ChangelogGen`](#changeloggen)
     * [`DotNet`](#dotnet)
     * [`Fable`](#fable)
     * [`FableCssModules`](#fablecssmodules)
@@ -68,6 +69,90 @@ dotnet add package EasyBuild.Tools
 ```
 <sup><a href='/src/Changelog.fs#L44-L46' title='Snippet source file'>snippet source</a> | <a href='#snippet-Changelog.findLastVersion' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
+
+</details>
+
+### `ChangelogGen`
+
+<details>
+<summary>
+<code>ChangelogGen.run</code>
+- generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.ChangelogGen">EasyBuild.ChangelogGen</a>
+</summary>
+
+<!-- snippet: ChangelogGen.run -->
+<a id='snippet-ChangelogGen.run'></a>
+```fs
+(
+    changelogFile: string,
+    ?allowDirty: bool,
+    ?allowBranch: string list,
+    ?tagFilter: string list,
+    ?preRelease: string,
+    ?config: string,
+    ?forceVersion: string,
+    ?skipInvalidCommit: bool,
+    ?dryRun: bool,
+    ?githubRepo: string,
+    ?workingDirectory: string,
+    ?forwardArguments: string list
+)
+: string
+```
+<sup><a href='/src/ChangelogGen.fs#L15-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-ChangelogGen.run' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+**Example**
+
+```fs
+open EasyBuild.Tools.ChangelogGen
+
+let newVersion = ChangelogGen.run "CHANGELOG.md"
+```
+
+</details>
+
+<details>
+<summary>
+<code>ChangelogGen.tryRun</code>
+- generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.ChangelogGen">EasyBuild.ChangelogGen</a>
+</summary>
+
+<!-- snippet: ChangelogGen.tryRun -->
+<a id='snippet-ChangelogGen.tryRun'></a>
+```fs
+(
+    changelogFile: string,
+    ?allowDirty: bool,
+    ?allowBranch: string list,
+    ?tagFilter: string list,
+    ?preRelease: string,
+    ?config: string,
+    ?forceVersion: string,
+    ?skipInvalidCommit: bool,
+    ?dryRun: bool,
+    ?githubRepo: string,
+    ?workingDirectory: string,
+    ?forwardArguments: string list
+)
+: ChangelogGenResult
+```
+<sup><a href='/src/ChangelogGen.fs#L58-L74' title='Snippet source file'>snippet source</a> | <a href='#snippet-ChangelogGen.tryRun' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+**Example**
+
+```fs
+open EasyBuild.Tools.ChangelogGen
+
+match ChangelogGen.tryRun "CHANGELOG.md" with
+| ChangelogGenResult.NoVersionBump ->
+    printfn "Nothing to deploy"
+| ChangelogGenResult.Error error ->
+    failwithf "Error while generating changelog:\n%s" error
+| ChangelogGenResult.NewVersion newVersion ->
+    // Continue release process
+```
 
 </details>
 
@@ -132,44 +217,6 @@ If `symbolApiKey` is not provided, `NUGET_SYMBOL_KEY` environment variable will 
 </details>
 
 generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.ChangelogGen">EasyBuild.ChangelogGen</a>
-
-<details>
-<summary>
-<code>DotNet.changelogGen</code>
-- generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.ChangelogGen">EasyBuild.ChangelogGen</a>
-</summary>
-
-<!-- snippet: DotNet.changelogGen -->
-<a id='snippet-DotNet.changelogGen'></a>
-```fs
-(
-    changelogFile: string,
-    ?allowDirty: bool,
-    ?allowBranch: string list,
-    ?tagFilter: string list,
-    ?preRelease: string,
-    ?config: string,
-    ?forceVersion: string,
-    ?skipInvalidCommit: bool,
-    ?dryRun: bool,
-    ?githubRepo: string,
-    ?workingDirectory: string,
-    ?forwardArguments: string list
-)
-: string
-```
-<sup><a href='/src/DotNet.fs#L125-L141' title='Snippet source file'>snippet source</a> | <a href='#snippet-DotNet.changelogGen' title='Start of snippet'>anchor</a></sup>
-<!-- endSnippet -->
-
-**Example**
-
-```fs
-open EasyBuild.Tools.DotNet
-
-let newVersion = DotNet.changelogGen "CHANGELOG.md"
-```
-
-</details>
 
 ### `Fable`
 

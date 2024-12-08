@@ -8,6 +8,7 @@
     <ItemGroup>
         <Compile Include="Extensions/BlackFox.CommandLine.fs" />
         <Compile Include="Changelog.fs" />
+        <Compile Include="ChangelogGen.fs" />
         <Compile Include="DotNet.fs" />
         <Compile Include="Fable.fs" />
         <Compile Include="FableCssModules.fs" />

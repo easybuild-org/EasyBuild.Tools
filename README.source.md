@@ -38,6 +38,50 @@ snippet: Changelog.findLastVersion
 
 </details>
 
+### `ChangelogGen`
+
+<details>
+<summary>
+<code>ChangelogGen.run</code>
+- generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.ChangelogGen">EasyBuild.ChangelogGen</a>
+</summary>
+
+snippet: ChangelogGen.run
+
+**Example**
+
+```fs
+open EasyBuild.Tools.ChangelogGen
+
+let newVersion = ChangelogGen.run "CHANGELOG.md"
+```
+
+</details>
+
+<details>
+<summary>
+<code>ChangelogGen.tryRun</code>
+- generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.ChangelogGen">EasyBuild.ChangelogGen</a>
+</summary>
+
+snippet: ChangelogGen.tryRun
+
+**Example**
+
+```fs
+open EasyBuild.Tools.ChangelogGen
+
+match ChangelogGen.tryRun "CHANGELOG.md" with
+| ChangelogGenResult.NoVersionBump ->
+    printfn "Nothing to deploy"
+| ChangelogGenResult.Error error ->
+    failwithf "Error while generating changelog:\n%s" error
+| ChangelogGenResult.NewVersion newVersion ->
+    // Continue release process
+```
+
+</details>
+
 ### `DotNet`
 
 <details>
@@ -73,24 +117,6 @@ If `symbolApiKey` is not provided, `NUGET_SYMBOL_KEY` environment variable will 
 </details>
 
 generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.ChangelogGen">EasyBuild.ChangelogGen</a>
-
-<details>
-<summary>
-<code>DotNet.changelogGen</code>
-- generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.ChangelogGen">EasyBuild.ChangelogGen</a>
-</summary>
-
-snippet: DotNet.changelogGen
-
-**Example**
-
-```fs
-open EasyBuild.Tools.DotNet
-
-let newVersion = DotNet.changelogGen "CHANGELOG.md"
-```
-
-</details>
 
 ### `Fable`
 
