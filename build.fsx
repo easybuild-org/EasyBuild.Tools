@@ -1,13 +1,15 @@
 #r "nuget: Fun.Build, 1.1.15"
-#r "./src/bin/Debug/net6.0/publish/EasyBuild.Tools.dll"
-#r "./src/bin/Debug/net6.0/publish/BlackFox.CommandLine.dll"
-#r "./src/bin/Debug/net6.0/publish/SimpleExec.dll"
+#r "./src/bin/Release/net8.0/publish/EasyBuild.Tools.dll"
+#r "./src/bin/Release/net8.0/publish/BlackFox.CommandLine.dll"
+#r "./src/bin/Release/net8.0/publish/SimpleExec.dll"
 #r "nuget: EasyBuild.FileSystemProvider, 0.3.0"
 
 open Fun.Build
 open EasyBuild.Tools.DotNet
 open EasyBuild.Tools.Git
 open EasyBuild.FileSystemProvider
+open EasyBuild.Tools.ChangelogGen
+open SimpleExec
 
 type Workspace = RelativeFileSystem<".">
 
@@ -62,15 +64,15 @@ pipeline "release" {
 
     Stages.test
 
-    stage "Update README.md" { run "dotnet mdsnippets --read-only true" }
-
     stage "Pack and publish" {
         run (fun _ ->
-            let newVersion = DotNet.changelogGen Workspace.``CHANGELOG.md``
+            let newVersion = ChangelogGen.run Workspace.``CHANGELOG.md``
 
             let nupkgPath = DotNet.pack (workingDirectory = Workspace.src.``.``)
 
             DotNet.nugetPush nupkgPath
+
+            Command.Run("dotnet", "mdsnippets --read-only true")
 
             Git.addAll ()
             Git.commitRelease newVersion
