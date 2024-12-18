@@ -15,7 +15,7 @@ type DotNet =
 
     static member pack
         // begin-snippet: DotNet.pack
-        (?workingDirectory: string, ?configuration: Configuration)
+        (?workingDirectory : string, ?projectFile: FileInfo, ?configuration: Configuration)
         : FileInfo
         // end-snippet
         =
@@ -26,11 +26,16 @@ type DotNet =
                 | Configuration.Release -> "Release"
                 | Configuration.Custom c -> c
 
+        let projectFile =
+            projectFile
+            |> Option.map _.FullName
+
         let struct (standardOutput, _) =
             Command.ReadAsync(
                 "dotnet",
                 CmdLine.empty
                 |> CmdLine.appendRaw "pack"
+                |> CmdLine.appendIfSome projectFile
                 |> CmdLine.appendPrefix "--configuration" configuration
                 |> CmdLine.toString,
                 ?workingDirectory = workingDirectory
