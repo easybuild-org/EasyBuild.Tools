@@ -365,6 +365,22 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 
 <details>
 <summary>
+<code>Git.commit</code>
+- commit staged files with given message
+</summary>
+
+<!-- snippet: Git.commit -->
+<a id='snippet-Git.commit'></a>
+```fs
+(message: string)
+```
+<sup><a href='/src/Git.fs#L29-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.commit' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+</details>
+
+<details>
+<summary>
 <code>Git.push</code>
 - push to the remote repository
 </summary>
@@ -374,7 +390,23 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 ```fs
 (?force: bool)
 ```
-<sup><a href='/src/Git.fs#L29-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.push' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Git.fs#L42-L44' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.push' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+</details>
+
+<details>
+<summary>
+<code>Git.isDirty</code>
+- check if the repository is dirty
+</summary>
+
+<!-- snippet: Git.push -->
+<a id='snippet-Git.push'></a>
+```fs
+(?force: bool)
+```
+<sup><a href='/src/Git.fs#L42-L44' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.push' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
