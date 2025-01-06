@@ -186,8 +186,28 @@ snippet: Git.commitRelease
 
 <details>
 <summary>
+<code>Git.commit</code>
+- commit staged files with given message
+</summary>
+
+snippet: Git.commit
+
+</details>
+
+<details>
+<summary>
 <code>Git.push</code>
 - push to the remote repository
+</summary>
+
+snippet: Git.push
+
+</details>
+
+<details>
+<summary>
+<code>Git.isDirty</code>
+- check if the repository is dirty
 </summary>
 
 snippet: Git.push
