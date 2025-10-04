@@ -6,6 +6,7 @@ open Tests.Utils
 open EasyBuild.Tools.PackageJson
 open System.IO
 open SimpleExec
+open BlackFox.CommandLine
 
 let tests =
     testList
@@ -35,10 +36,10 @@ let tests =
                 // Restore the original content
                 Command.Run(
                     "git",
-                    [
-                        "checkout"
-                        packageJsonFile.FullName
-                    ]
+                    CmdLine.empty
+                    |> CmdLine.appendRaw "checkout"
+                    |> CmdLine.append packageJsonFile.FullName
+                    |> CmdLine.toString
                 )
 
                 Expect.equal newContent expected
