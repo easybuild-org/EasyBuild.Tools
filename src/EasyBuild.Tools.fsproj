@@ -18,6 +18,7 @@
         <Compile Include="PackageJson.fs" />
         <Compile Include="Vercel.fs" />
         <Compile Include="Vite.fs" />
+        <Compile Include="Husky.fs" />
     </ItemGroup>
 
     <ItemGroup>

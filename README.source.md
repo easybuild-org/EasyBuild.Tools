@@ -391,3 +391,15 @@ snippet: Vite.build
 snippet: Vite.watch
 
 </details>
+
+### `Husky`
+
+<details>
+<summary>
+<code>Husky.install</code>
+- Install Husky hooks
+</summary>
+
+snippet: Husky.install
+
+</details>
