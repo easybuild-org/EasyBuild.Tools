@@ -28,7 +28,8 @@ Tool for generating changelog based on Git history based on [Conventional Commit
     * [`Npm`](#npm)
     * [`PackageJson`](#packagejson)
     * [`Vercel`](#vercel)
-    * [`Vite`](#vite)<!-- endToc -->
+    * [`Vite`](#vite)
+    * [`Husky`](#husky)<!-- endToc -->
 
 ## Installation
 
@@ -795,6 +796,25 @@ if PackageJson.needPublishing packageJsonFile then
 : Task
 ```
 <sup><a href='/src/Vite.fs#L191-L209' title='Snippet source file'>snippet source</a> | <a href='#snippet-Vite.watch' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+</details>
+
+### `Husky`
+
+<details>
+<summary>
+<code>Husky.install</code>
+- Install Husky hooks
+</summary>
+
+<!-- snippet: Husky.install -->
+<a id='snippet-Husky.install'></a>
+```fs
+(?workingDirectory: string)
+: unit
+```
+<sup><a href='/src/Husky.fs#L8-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-Husky.install' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
