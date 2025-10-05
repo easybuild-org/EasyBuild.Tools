@@ -30,7 +30,8 @@ Tool for generating changelog based on Git history based on [Conventional Commit
     * [`Vercel`](#vercel)
     * [`Vite`](#vite)
     * [`Husky`](#husky)
-    * [`Femto`](#femto)<!-- endToc -->
+    * [`Femto`](#femto)
+    * [`GhPages`](#ghpages)<!-- endToc -->
 
 ## Installation
 
@@ -839,6 +840,47 @@ if PackageJson.needPublishing packageJsonFile then
 : unit
 ```
 <sup><a href='/src/Femto.fs#L9-L12' title='Snippet source file'>snippet source</a> | <a href='#snippet-Femto.validate' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+</details>
+
+### `GhPages`
+
+<details>
+<summary>
+<code>GhPages.run</code>
+- Publish files to a gh-pages branch on GitHub (or any other branch anywhere else).
+</summary>
+
+<!-- snippet: GhPages.run -->
+<a id='snippet-GhPages.run'></a>
+```fs
+(
+    ?dist: string,
+    ?src: string,
+    ?branch: string,
+    ?dest: string,
+    ?add: bool,
+    ?silent: bool,
+    ?message: string,
+    ?tag: string,
+    ?git: string,
+    ?dotfiles: bool,
+    ?nojekyll: bool,
+    ?cname: string,
+    ?repo: string,
+    ?depth: int,
+    ?remote: string,
+    ?user: string,
+    ?remove: string,
+    ?noPush: bool,
+    ?noHistory: bool,
+    ?beforeAdd: string,
+    ?workingDirectory: string
+)
+: unit
+```
+<sup><a href='/src/GhPages.fs#L9-L34' title='Snippet source file'>snippet source</a> | <a href='#snippet-GhPages.run' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
