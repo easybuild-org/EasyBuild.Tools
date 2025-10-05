@@ -415,3 +415,15 @@ snippet: Husky.install
 snippet: Femto.validate
 
 </details>
+
+### `GhPages`
+
+<details>
+<summary>
+<code>GhPages.run</code>
+- Publish files to a gh-pages branch on GitHub (or any other branch anywhere else).
+</summary>
+
+snippet: GhPages.run
+
+</details>

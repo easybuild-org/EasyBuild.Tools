@@ -20,6 +20,7 @@
         <Compile Include="Vite.fs" />
         <Compile Include="Husky.fs" />
         <Compile Include="Femto.fs" />
+        <Compile Include="GhPages.fs" />
     </ItemGroup>
 
     <ItemGroup>
