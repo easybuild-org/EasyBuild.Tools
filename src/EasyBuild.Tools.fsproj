@@ -19,6 +19,7 @@
         <Compile Include="Vercel.fs" />
         <Compile Include="Vite.fs" />
         <Compile Include="Husky.fs" />
+        <Compile Include="Femto.fs" />
     </ItemGroup>
 
     <ItemGroup>

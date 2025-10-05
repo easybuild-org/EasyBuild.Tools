@@ -403,3 +403,15 @@ snippet: Vite.watch
 snippet: Husky.install
 
 </details>
+
+### `Femto`
+
+<details>
+<summary>
+<code>Femto.validate</code>
+- Check that the XML tags used in the F# project file are parsable and a npm package version can be calculated
+</summary>
+
+snippet: Femto.validate
+
+</details>
