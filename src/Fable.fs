@@ -37,6 +37,7 @@ type Fable =
             ?noCache: bool,
             ?exclude: string list,
             ?lang: Fable.Lang,
+            ?testMSBuildCracker: bool,
             ?workingDirectory: string
         )
         : unit
@@ -71,6 +72,7 @@ type Fable =
             |> CmdLine.apprendFlagIfSomeTrue "--noCache" noCache
             |> CmdLine.appendPrefixSeqIfSome "--exclude" exclude
             |> CmdLine.appendPrefix "--lang" lang
+            |> CmdLine.apprendFlagIfSomeTrue "--test:MSBuildCracker" testMSBuildCracker
             |> CmdLine.apprendFlagIfSomeTrue "--runScript" runScript
             |> CmdLine.appendRawPrefixIfSome "--run" run
             |> CmdLine.appendRawPrefixIfSome "--runFast" runFast
@@ -99,6 +101,7 @@ type Fable =
             ?noCache: bool,
             ?exclude: string list,
             ?lang: Fable.Lang,
+            ?testMSBuildCracker: bool,
             ?workingDirectory: string
         )
         : Task
@@ -133,6 +136,7 @@ type Fable =
             |> CmdLine.apprendFlagIfSomeTrue "--noCache" noCache
             |> CmdLine.appendPrefixSeqIfSome "--exclude" exclude
             |> CmdLine.appendPrefix "--lang" lang
+            |> CmdLine.apprendFlagIfSomeTrue "--test:MSBuildCracker" testMSBuildCracker
             |> CmdLine.apprendFlagIfSomeTrue "--runScript" runScript
             |> CmdLine.appendRawPrefixIfSome "--run" run
             |> CmdLine.appendRawPrefixIfSome "--runFast" runFast
