@@ -29,7 +29,8 @@ Tool for generating changelog based on Git history based on [Conventional Commit
     * [`PackageJson`](#packagejson)
     * [`Vercel`](#vercel)
     * [`Vite`](#vite)
-    * [`Husky`](#husky)<!-- endToc -->
+    * [`Husky`](#husky)
+    * [`Femto`](#femto)<!-- endToc -->
 
 ## Installation
 
@@ -819,6 +820,25 @@ if PackageJson.needPublishing packageJsonFile then
 : unit
 ```
 <sup><a href='/src/Husky.fs#L8-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-Husky.install' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+</details>
+
+### `Femto`
+
+<details>
+<summary>
+<code>Femto.validate</code>
+- Check that the XML tags used in the F# project file are parsable and a npm package version can be calculated
+</summary>
+
+<!-- snippet: Femto.validate -->
+<a id='snippet-Femto.validate'></a>
+```fs
+(?project: string, ?workingDirectory: string)
+: unit
+```
+<sup><a href='/src/Femto.fs#L9-L12' title='Snippet source file'>snippet source</a> | <a href='#snippet-Femto.validate' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
