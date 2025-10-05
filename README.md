@@ -248,11 +248,13 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
     ?noCache: bool,
     ?exclude: string list,
     ?lang: Fable.Lang,
+    ?testMSBuildCracker: bool,
+    ?legacyCracker: bool,
     ?workingDirectory: string
 )
 : unit
 ```
-<sup><a href='/src/Fable.fs#L21-L43' title='Snippet source file'>snippet source</a> | <a href='#snippet-Fable.build' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Fable.fs#L21-L45' title='Snippet source file'>snippet source</a> | <a href='#snippet-Fable.build' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -285,11 +287,13 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
     ?noCache: bool,
     ?exclude: string list,
     ?lang: Fable.Lang,
+    ?testMSBuildCracker: bool,
+    ?legacyCracker: bool,
     ?workingDirectory: string
 )
 : Task
 ```
-<sup><a href='/src/Fable.fs#L82-L105' title='Snippet source file'>snippet source</a> | <a href='#snippet-Fable.watch' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Fable.fs#L86-L111' title='Snippet source file'>snippet source</a> | <a href='#snippet-Fable.watch' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
