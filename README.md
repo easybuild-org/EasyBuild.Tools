@@ -87,7 +87,7 @@ dotnet add package EasyBuild.Tools
 <a id='snippet-ChangelogGen.run'></a>
 ```fs
 (
-    changelogFile: string,
+    changelogFile: FileInfo,
     ?allowDirty: bool,
     ?allowBranch: string list,
     ?tagFilter: string list,
@@ -125,7 +125,7 @@ let newVersion = ChangelogGen.run "CHANGELOG.md"
 <a id='snippet-ChangelogGen.tryRun'></a>
 ```fs
 (
-    changelogFile: string,
+    changelogFile: FileInfo,
     ?allowDirty: bool,
     ?allowBranch: string list,
     ?tagFilter: string list,
@@ -311,10 +311,10 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 <!-- snippet: FableCssModules.runAsync -->
 <a id='snippet-FableCssModules.runAsync'></a>
 ```fs
-(?outFile: string, ?``internal``: bool, ?camelCase: bool, ?workingDirectory: string)
+(?outFile: FileInfo, ?``internal``: bool, ?camelCase: bool, ?workingDirectory: string)
 : Task
 ```
-<sup><a href='/src/FableCssModules.fs#L10-L13' title='Snippet source file'>snippet source</a> | <a href='#snippet-FableCssModules.runAsync' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/FableCssModules.fs#L11-L14' title='Snippet source file'>snippet source</a> | <a href='#snippet-FableCssModules.runAsync' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -328,10 +328,10 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 <!-- snippet: FableCssModules.run -->
 <a id='snippet-FableCssModules.run'></a>
 ```fs
-(?outFile: string, ?``internal``: bool, ?camelCase: bool, ?workingDirectory: string)
+(?outFile: FileInfo, ?``internal``: bool, ?camelCase: bool, ?workingDirectory: string)
 : unit
 ```
-<sup><a href='/src/FableCssModules.fs#L28-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-FableCssModules.run' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/FableCssModules.fs#L30-L33' title='Snippet source file'>snippet source</a> | <a href='#snippet-FableCssModules.run' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -431,7 +431,7 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 ```fs
 (
     // Configuration
-    ?config: string,
+    ?config: FileInfo,
     ?exitCrash: bool,
     ?ignore: string list,
     ?noColors: bool,
@@ -457,7 +457,7 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 )
 : Task
 ```
-<sup><a href='/src/Nodemon.fs#L11-L39' title='Snippet source file'>snippet source</a> | <a href='#snippet-Nodemon.runAsync' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Nodemon.fs#L12-L40' title='Snippet source file'>snippet source</a> | <a href='#snippet-Nodemon.runAsync' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -473,7 +473,7 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 ```fs
 (
     // Configuration
-    ?config: string,
+    ?config: FileInfo,
     ?exitCrash: bool,
     ?ignore: string list,
     ?noColors: bool,
@@ -499,7 +499,7 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 )
 : unit
 ```
-<sup><a href='/src/Nodemon.fs#L87-L115' title='Snippet source file'>snippet source</a> | <a href='#snippet-Nodemon.run' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Nodemon.fs#L90-L118' title='Snippet source file'>snippet source</a> | <a href='#snippet-Nodemon.run' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -759,7 +759,7 @@ if PackageJson.needPublishing packageJsonFile then
     ?ssrManifest: Vite.Build.SSRManifest,
     ?emptyOutDir: bool,
     ?watch: bool,
-    ?config: string,
+    ?config: FileInfo,
     ?``base``: string,
     ?logLevel: Vite.Build.LogLevel,
     ?clearScreen: bool,
@@ -769,7 +769,7 @@ if PackageJson.needPublishing packageJsonFile then
     ?workingDirectory: string
 )
 ```
-<sup><a href='/src/Vite.fs#L72-L94' title='Snippet source file'>snippet source</a> | <a href='#snippet-Vite.build' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Vite.fs#L73-L95' title='Snippet source file'>snippet source</a> | <a href='#snippet-Vite.build' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -790,7 +790,7 @@ if PackageJson.needPublishing packageJsonFile then
     ?cors: bool,
     ?strictPort: bool,
     ?force: bool,
-    ?config: string,
+    ?config: FileInfo,
     ?``base``: string,
     ?logLevel: Vite.Watch.LogLevel,
     ?clearScreen: bool,
@@ -801,7 +801,7 @@ if PackageJson.needPublishing packageJsonFile then
 )
 : Task
 ```
-<sup><a href='/src/Vite.fs#L191-L209' title='Snippet source file'>snippet source</a> | <a href='#snippet-Vite.watch' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Vite.fs#L194-L212' title='Snippet source file'>snippet source</a> | <a href='#snippet-Vite.watch' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -836,10 +836,10 @@ if PackageJson.needPublishing packageJsonFile then
 <!-- snippet: Femto.validate -->
 <a id='snippet-Femto.validate'></a>
 ```fs
-(?project: string, ?workingDirectory: string)
+(?projectFile: FileInfo, ?workingDirectory: string)
 : unit
 ```
-<sup><a href='/src/Femto.fs#L9-L12' title='Snippet source file'>snippet source</a> | <a href='#snippet-Femto.validate' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Femto.fs#L10-L13' title='Snippet source file'>snippet source</a> | <a href='#snippet-Femto.validate' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
