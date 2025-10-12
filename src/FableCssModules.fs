@@ -1,5 +1,6 @@
 module EasyBuild.Tools.FableCssModules
 
+open System.IO
 open SimpleExec
 open BlackFox.CommandLine
 open System.Threading.Tasks
@@ -8,10 +9,11 @@ type FableCssModules =
 
     static member runAsync
         // begin-snippet: FableCssModules.runAsync
-        (?outFile: string, ?``internal``: bool, ?camelCase: bool, ?workingDirectory: string)
+        (?outFile: FileInfo, ?``internal``: bool, ?camelCase: bool, ?workingDirectory: string)
         : Task
         // end-snippet
         =
+        let outFile = outFile |> Option.map _.FullName
 
         Command.RunAsync(
             "npx",
@@ -26,7 +28,7 @@ type FableCssModules =
 
     static member run
         // begin-snippet: FableCssModules.run
-        (?outFile: string, ?``internal``: bool, ?camelCase: bool, ?workingDirectory: string)
+        (?outFile: FileInfo, ?``internal``: bool, ?camelCase: bool, ?workingDirectory: string)
         : unit
         // end-snippet
         =

@@ -1,5 +1,6 @@
 module EasyBuild.Tools.Vite
 
+open System.IO
 open SimpleExec
 open BlackFox.CommandLine
 open System.Threading.Tasks
@@ -82,7 +83,7 @@ type Vite =
             ?ssrManifest: Vite.Build.SSRManifest,
             ?emptyOutDir: bool,
             ?watch: bool,
-            ?config: string,
+            ?config: FileInfo,
             ?``base``: string,
             ?logLevel: Vite.Build.LogLevel,
             ?clearScreen: bool,
@@ -159,6 +160,8 @@ type Vite =
                 | Vite.Build.Debug.Feat value -> cmdLine |> CmdLine.appendPrefix "--debug" value
             | None -> cmdLine
 
+        let config = config |> Option.map _.FullName
+
         Command.Run(
             "npx",
             CmdLine.empty
@@ -196,7 +199,7 @@ type Vite =
             ?cors: bool,
             ?strictPort: bool,
             ?force: bool,
-            ?config: string,
+            ?config: FileInfo,
             ?``base``: string,
             ?logLevel: Vite.Watch.LogLevel,
             ?clearScreen: bool,
@@ -241,6 +244,8 @@ type Vite =
                 | Vite.Watch.Debug.Bool false -> cmdLine
                 | Vite.Watch.Debug.Feat value -> cmdLine |> CmdLine.appendPrefix "--debug" value
             | None -> cmdLine
+
+        let config = config |> Option.map _.FullName
 
         Command.RunAsync(
             "npx",

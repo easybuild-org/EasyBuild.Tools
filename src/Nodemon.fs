@@ -1,5 +1,6 @@
 module EasyBuild.Tools.Nodemon
 
+open System.IO
 open SimpleExec
 open BlackFox.CommandLine
 open System.Threading.Tasks
@@ -11,7 +12,7 @@ type Nodemon =
         // begin-snippet: Nodemon.runAsync
         (
             // Configuration
-            ?config: string,
+            ?config: FileInfo,
             ?exitCrash: bool,
             ?ignore: string list,
             ?noColors: bool,
@@ -48,6 +49,8 @@ type Nodemon =
             match exec with
             | Some exec -> cmdLine |> CmdLine.appendRaw "--exec" |> CmdLine.appendRaw exec
             | None -> cmdLine
+
+        let config = config |> Option.map _.FullName
 
         Command.RunAsync(
             "npx",
@@ -87,7 +90,7 @@ type Nodemon =
         // begin-snippet: Nodemon.run
         (
             // Configuration
-            ?config: string,
+            ?config: FileInfo,
             ?exitCrash: bool,
             ?ignore: string list,
             ?noColors: bool,

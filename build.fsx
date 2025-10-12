@@ -10,6 +10,7 @@ open EasyBuild.Tools.Git
 open EasyBuild.FileSystemProvider
 open EasyBuild.Tools.ChangelogGen
 open SimpleExec
+open System.IO
 
 type Workspace = RelativeFileSystem<".">
 
@@ -66,7 +67,7 @@ pipeline "release" {
 
     stage "Pack and publish" {
         run (fun _ ->
-            let newVersion = ChangelogGen.run Workspace.``CHANGELOG.md``
+            let newVersion = Workspace.``CHANGELOG.md`` |> FileInfo |> ChangelogGen.run
 
             let nupkgPath = DotNet.pack (workingDirectory = Workspace.src.``.``)
 

@@ -14,7 +14,7 @@ type ChangelogGen =
     static member run
         // begin-snippet: ChangelogGen.run
         (
-            changelogFile: string,
+            changelogFile: FileInfo,
             ?allowDirty: bool,
             ?allowBranch: string list,
             ?tagFilter: string list,
@@ -35,7 +35,7 @@ type ChangelogGen =
                 "dotnet",
                 CmdLine.empty
                 |> CmdLine.appendRaw "changelog-gen"
-                |> CmdLine.appendRaw changelogFile
+                |> CmdLine.appendRaw changelogFile.FullName
                 |> CmdLine.appendIf (defaultArg allowDirty false) "--allow-dirty"
                 |> CmdLine.appendIf (defaultArg skipInvalidCommit false) "--skip-invalid-commit"
                 |> CmdLine.appendIf (defaultArg dryRun false) "--dry-run"
@@ -57,7 +57,7 @@ type ChangelogGen =
     static member tryRun
         // begin-snippet: ChangelogGen.tryRun
         (
-            changelogFile: string,
+            changelogFile: FileInfo,
             ?allowDirty: bool,
             ?allowBranch: string list,
             ?tagFilter: string list,
