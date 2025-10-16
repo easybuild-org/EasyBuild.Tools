@@ -39,5 +39,4 @@ type FableCssModules =
             ?camelCase = camelCase,
             ?workingDirectory = workingDirectory
         )
-        |> Async.AwaitTask
-        |> Async.RunSynchronously
+        |> Task.RunSynchronously

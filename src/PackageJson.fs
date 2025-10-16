@@ -4,6 +4,7 @@ open System.Text.Json
 open System.Text.Json.Nodes
 open System.IO
 open SimpleExec
+open System.Threading.Tasks
 
 type PackageJson =
 
@@ -86,5 +87,4 @@ type PackageJson =
                             packageSpec
                             e.Message
         }
-        |> Async.AwaitTask
-        |> Async.RunSynchronously
+        |> Task.RunSynchronously

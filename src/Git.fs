@@ -2,6 +2,7 @@ module EasyBuild.Tools.Git
 
 open SimpleExec
 open BlackFox.CommandLine
+open System.Threading.Tasks
 
 type Git =
 
@@ -64,7 +65,6 @@ type Git =
                 |> CmdLine.appendRaw "--porcelain"
                 |> CmdLine.toString
             )
-            |> Async.AwaitTask
-            |> Async.RunSynchronously
+            |> Task.RunSynchronously
 
         standardOutput.Trim().Length > 0

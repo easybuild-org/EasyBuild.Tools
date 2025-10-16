@@ -144,5 +144,4 @@ type Nodemon =
             ?verbose = verbose,
             ?workingDirectory = workingDirectory
         )
-        |> Async.AwaitTask
-        |> Async.RunSynchronously
+        |> Task.RunSynchronously

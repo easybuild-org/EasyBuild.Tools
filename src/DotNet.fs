@@ -4,6 +4,7 @@ open SimpleExec
 open BlackFox.CommandLine
 open System.Text.RegularExpressions
 open System.IO
+open System.Threading.Tasks
 
 [<RequireQualifiedAccess>]
 type Configuration =
@@ -15,7 +16,7 @@ type DotNet =
 
     static member pack
         // begin-snippet: DotNet.pack
-        (?workingDirectory : string, ?projectFile: FileInfo, ?configuration: Configuration)
+        (?workingDirectory: string, ?projectFile: FileInfo, ?configuration: Configuration)
         : FileInfo
         // end-snippet
         =
@@ -26,9 +27,7 @@ type DotNet =
                 | Configuration.Release -> "Release"
                 | Configuration.Custom c -> c
 
-        let projectFile =
-            projectFile
-            |> Option.map _.FullName
+        let projectFile = projectFile |> Option.map _.FullName
 
         let struct (standardOutput, _) =
             Command.ReadAsync(
@@ -40,8 +39,7 @@ type DotNet =
                 |> CmdLine.toString,
                 ?workingDirectory = workingDirectory
             )
-            |> Async.AwaitTask
-            |> Async.RunSynchronously
+            |> Task.RunSynchronously
 
         let m =
             Regex.Match(standardOutput, "Successfully created package '(?'nupkgPath'.*\.nupkg)'")

@@ -3,6 +3,7 @@ module EasyBuild.Tools.ChangelogGen
 open System.IO
 open SimpleExec
 open BlackFox.CommandLine
+open System.Threading.Tasks
 
 [<RequireQualifiedAccess>]
 type ChangelogGenResult =
@@ -49,8 +50,7 @@ type ChangelogGen =
                 |> CmdLine.toString,
                 ?workingDirectory = workingDirectory
             )
-            |> Async.AwaitTask
-            |> Async.RunSynchronously
+            |> Task.RunSynchronously
 
         newVersion.Trim()
 
