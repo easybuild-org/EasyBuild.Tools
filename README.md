@@ -102,7 +102,7 @@ dotnet add package EasyBuild.Tools
 )
 : string
 ```
-<sup><a href='/src/ChangelogGen.fs#L15-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-ChangelogGen.run' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/ChangelogGen.fs#L16-L32' title='Snippet source file'>snippet source</a> | <a href='#snippet-ChangelogGen.run' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 **Example**
@@ -170,10 +170,10 @@ match ChangelogGen.tryRun "CHANGELOG.md" with
 <!-- snippet: DotNet.pack -->
 <a id='snippet-DotNet.pack'></a>
 ```fs
-(?workingDirectory : string, ?projectFile: FileInfo, ?configuration: Configuration)
+(?workingDirectory: string, ?projectFile: FileInfo, ?configuration: Configuration)
 : FileInfo
 ```
-<sup><a href='/src/DotNet.fs#L17-L20' title='Snippet source file'>snippet source</a> | <a href='#snippet-DotNet.pack' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/DotNet.fs#L18-L21' title='Snippet source file'>snippet source</a> | <a href='#snippet-DotNet.pack' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 **Example**
@@ -210,7 +210,7 @@ let nupkgFile = DotNet.pack()
     ?forceEcho: bool
 )
 ```
-<sup><a href='/src/DotNet.fs#L58-L73' title='Snippet source file'>snippet source</a> | <a href='#snippet-DotNet.nugetPush' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/DotNet.fs#L56-L71' title='Snippet source file'>snippet source</a> | <a href='#snippet-DotNet.nugetPush' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 If `apiKey` is not provided, `NUGET_KEY` environment variable will be used.
@@ -349,7 +349,7 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 ```fs
 ()
 ```
-<sup><a href='/src/Git.fs#L9-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.addAll' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Git.fs#L10-L12' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.addAll' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -365,7 +365,7 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 ```fs
 (newVersion: string)
 ```
-<sup><a href='/src/Git.fs#L16-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.commitRelease' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Git.fs#L17-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.commitRelease' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -381,7 +381,7 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 ```fs
 (message: string)
 ```
-<sup><a href='/src/Git.fs#L29-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.commit' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Git.fs#L30-L32' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.commit' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -397,7 +397,7 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 ```fs
 (?force: bool)
 ```
-<sup><a href='/src/Git.fs#L42-L44' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.push' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Git.fs#L43-L45' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.push' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -413,7 +413,7 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 ```fs
 (?force: bool)
 ```
-<sup><a href='/src/Git.fs#L42-L44' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.push' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Git.fs#L43-L45' title='Snippet source file'>snippet source</a> | <a href='#snippet-Git.push' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
@@ -551,7 +551,7 @@ generate changelog using <a href="https://github.com/easybuild-org/EasyBuild.Cha
 ```fs
 (file: FileInfo, newVersion: string)
 ```
-<sup><a href='/src/PackageJson.fs#L15-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-PackageJson.replaceVersion' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/PackageJson.fs#L16-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-PackageJson.replaceVersion' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 **Example**
@@ -576,7 +576,7 @@ PackageJson.replaceVersion packageJsonFile "1.0.0"
 ```fs
 (file: FileInfo)
 ```
-<sup><a href='/src/PackageJson.fs#L35-L37' title='Snippet source file'>snippet source</a> | <a href='#snippet-PackageJson.getName' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/PackageJson.fs#L36-L38' title='Snippet source file'>snippet source</a> | <a href='#snippet-PackageJson.getName' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 **Example**
@@ -601,7 +601,7 @@ let packageName = PackageJson.getName packageJsonFile
 ```fs
 (file: FileInfo)
 ```
-<sup><a href='/src/PackageJson.fs#L43-L45' title='Snippet source file'>snippet source</a> | <a href='#snippet-PackageJson.getVersion' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/PackageJson.fs#L44-L46' title='Snippet source file'>snippet source</a> | <a href='#snippet-PackageJson.getVersion' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 **Example**
@@ -627,7 +627,7 @@ let packageVersion = PackageJson.getVersion packageJsonFile
 (packageJson: FileInfo)
 : bool
 ```
-<sup><a href='/src/PackageJson.fs#L56-L59' title='Snippet source file'>snippet source</a> | <a href='#snippet-PackageJson.needPublishing' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/PackageJson.fs#L57-L60' title='Snippet source file'>snippet source</a> | <a href='#snippet-PackageJson.needPublishing' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 **Example**
