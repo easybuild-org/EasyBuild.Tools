@@ -2,7 +2,7 @@
 #r "./src/bin/Release/net8.0/publish/EasyBuild.Tools.dll"
 #r "./src/bin/Release/net8.0/publish/BlackFox.CommandLine.dll"
 #r "./src/bin/Release/net8.0/publish/SimpleExec.dll"
-#r "nuget: EasyBuild.FileSystemProvider, 0.3.0"
+#r "nuget: EasyBuild.FileSystemProvider, 1.1.0"
 
 open Fun.Build
 open EasyBuild.Tools.DotNet
@@ -12,7 +12,7 @@ open EasyBuild.Tools.ChangelogGen
 open SimpleExec
 open System.IO
 
-type Workspace = RelativeFileSystem<".">
+type Workspace = AbsoluteFileSystem<".">
 
 let options =
     {|
