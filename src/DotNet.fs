@@ -5,6 +5,7 @@ open BlackFox.CommandLine
 open System.Text.RegularExpressions
 open System.IO
 open System.Threading.Tasks
+open System.Text.Json.Nodes
 
 [<RequireQualifiedAccess>]
 type Configuration =
@@ -13,6 +14,22 @@ type Configuration =
     | Custom of string
 
 type DotNet =
+
+    static member restore
+        // begin-snippet: DotNet.restore
+        (?workingDirectory: string, ?projectFile: FileInfo)
+        // end-snippet
+        =
+        let projectFile = projectFile |> Option.map _.FullName
+
+        Command.Run(
+            "dotnet",
+            CmdLine.empty
+            |> CmdLine.appendRaw "restore"
+            |> CmdLine.appendIfSome projectFile
+            |> CmdLine.toString,
+            ?workingDirectory = workingDirectory
+        )
 
     static member pack
         // begin-snippet: DotNet.pack
@@ -27,26 +44,40 @@ type DotNet =
                 | Configuration.Release -> "Release"
                 | Configuration.Custom c -> c
 
+        // Because, we are invoking MSBuild task directly we need to make sure
+        // the project is restored first
+        //
+        // We can't run `dotnet msbuild -t:Restore,Pack in one go because if some MSBuild tasks
+        // are registered by one of the dependency it will not be
+        DotNet.restore (?workingDirectory = workingDirectory, ?projectFile = projectFile)
+
         let projectFile = projectFile |> Option.map _.FullName
 
         let struct (standardOutput, _) =
             Command.ReadAsync(
                 "dotnet",
                 CmdLine.empty
-                |> CmdLine.appendRaw "pack"
+                |> CmdLine.appendRaw "msbuild"
                 |> CmdLine.appendIfSome projectFile
-                |> CmdLine.appendPrefix "--configuration" configuration
+                |> CmdLine.appendRaw "-t:Pack"
+                |> CmdLine.appendRaw $"-p:Configuration=%s{configuration}"
+                |> CmdLine.appendRaw "-getItem:NuGetPackOutput"
                 |> CmdLine.toString,
                 ?workingDirectory = workingDirectory
             )
             |> Task.RunSynchronously
 
-        let m =
-            Regex.Match(standardOutput, "Successfully created package '(?'nupkgPath'.*\.nupkg)'")
+        let json = JsonNode.Parse(standardOutput)
 
-        if m.Success then
-            m.Groups.["nupkgPath"].Value |> FileInfo
-        else
+        let nuGetPackOutput = json["Items"].["NuGetPackOutput"].AsArray()
+
+        let nupkgItem =
+            nuGetPackOutput
+            |> Seq.tryFind (fun item -> item["Extension"].GetValue<string>() = ".nupkg")
+
+        match nupkgItem with
+        | Some item -> item["FullPath"].GetValue<string>() |> FileInfo
+        | None ->
             failwithf
                 $"""Failed to find nupkg path in output:
 Output:

@@ -17,3 +17,7 @@ module Expect =
     let throws actual = Expect.throws actual ""
 
     let throwsT<'texn when 'texn :> exn> actual = Expect.throwsT<'texn> actual ""
+
+    let isTrue actual = Expect.isTrue actual ""
+
+    let isNotNull actual = Expect.isNotNull actual ""

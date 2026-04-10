@@ -9,6 +9,7 @@ let allTests =
         [
             Changelog.tests
             PackageJson.tests
+            DotNet.tests
         ]
 
 [<EntryPoint>]
