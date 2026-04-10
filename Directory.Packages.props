@@ -11,9 +11,8 @@
     </PackageVersion>
     <PackageVersion Include="Expecto" Version="10.2.3" />
     <PackageVersion Include="FSharp.Core" Version="6.0.0" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.4.0" />
     <PackageVersion Include="SimpleExec" Version="13.0.0" />
-    <PackageVersion Include="System.Text.Json" Version="10.0.3" />
     <PackageVersion Include="YoloDev.Expecto.TestSdk" Version="0.15.5" />
   </ItemGroup>
 </Project>

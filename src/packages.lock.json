@@ -1,7 +1,7 @@
 {
   "version": 2,
   "dependencies": {
-    "net8.0": {
+    "net10.0": {
       "BlackFox.CommandLine": {
         "type": "Direct",
         "requested": "[1.0.0, )",
@@ -28,26 +28,6 @@
         "requested": "[13.0.0, )",
         "resolved": "13.0.0",
         "contentHash": "zcCR1pupa1wI1VqBULRiQKeHKKZOuJhi/K+4V5oO+rHJZlaOD53ViFo1c3PavDoMAfSn/FAXGAWpPoF57rwhYg=="
-      },
-      "System.Text.Json": {
-        "type": "Direct",
-        "requested": "[10.0.3, )",
-        "resolved": "10.0.3",
-        "contentHash": "NTUt9DL+maqbgrIYCAmeZUbX0NoXaueySyjW/bdOlFdSUDC1l51XnsbVEuj5tuad12vdq5Sviskp9uMVGgCNLw==",
-        "dependencies": {
-          "System.IO.Pipelines": "10.0.3",
-          "System.Text.Encodings.Web": "10.0.3"
-        }
-      },
-      "System.IO.Pipelines": {
-        "type": "Transitive",
-        "resolved": "10.0.3",
-        "contentHash": "WMxiA2jGdHnRBmoVK55YUq5VPaxW0Sg2frPtXV+urUMvpqHIga6lleV/YuryHIuGsAKVjQAjv6PrQ6IJpoLohQ=="
-      },
-      "System.Text.Encodings.Web": {
-        "type": "Transitive",
-        "resolved": "10.0.3",
-        "contentHash": "l8QNBPp92bVzl9Kw8nNtm1uYRNNhUrdulZjM4a8YK/QGNa8z9utKsC0bDoPB+Vq8LOlbD3fIyGlabtz80jT7cw=="
       }
     }
   }
