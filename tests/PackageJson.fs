@@ -113,3 +113,4 @@ let tests =
                 Expect.equal needsPublishing false
             }
         ]
+    |> testSequenced
