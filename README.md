@@ -173,7 +173,7 @@ match ChangelogGen.tryRun "CHANGELOG.md" with
 (?workingDirectory: string, ?projectFile: FileInfo, ?configuration: Configuration)
 : FileInfo
 ```
-<sup><a href='/src/DotNet.fs#L18-L21' title='Snippet source file'>snippet source</a> | <a href='#snippet-DotNet.pack' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/DotNet.fs#L35-L38' title='Snippet source file'>snippet source</a> | <a href='#snippet-DotNet.pack' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 **Example**
@@ -210,7 +210,7 @@ let nupkgFile = DotNet.pack()
     ?forceEcho: bool
 )
 ```
-<sup><a href='/src/DotNet.fs#L56-L71' title='Snippet source file'>snippet source</a> | <a href='#snippet-DotNet.nugetPush' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/DotNet.fs#L87-L102' title='Snippet source file'>snippet source</a> | <a href='#snippet-DotNet.nugetPush' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 If `apiKey` is not provided, `NUGET_KEY` environment variable will be used.
