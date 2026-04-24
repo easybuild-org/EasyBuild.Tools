@@ -820,7 +820,7 @@ if PackageJson.needPublishing packageJsonFile then
 (?workingDirectory: string)
 : unit
 ```
-<sup><a href='/src/Husky.fs#L8-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-Husky.install' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Husky.fs#L14-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-Husky.install' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 </details>
