@@ -35,6 +35,7 @@ type Fable =
             ?runScript: bool,
             ?noRestore: bool,
             ?noCache: bool,
+            ?noGitignore: bool,
             ?exclude: string list,
             ?lang: Fable.Lang,
             ?testMSBuildCracker: bool,
@@ -71,6 +72,7 @@ type Fable =
             |> CmdLine.apprendFlagIfSomeTrue "--typedArrays" typedArrays
             |> CmdLine.apprendFlagIfSomeTrue "--noRestore" noRestore
             |> CmdLine.apprendFlagIfSomeTrue "--noCache" noCache
+            |> CmdLine.apprendFlagIfSomeTrue "--noGitignore" noGitignore
             |> CmdLine.appendPrefixSeqIfSome "--exclude" exclude
             |> CmdLine.appendPrefix "--lang" lang
             |> CmdLine.apprendFlagIfSomeTrue "--test:MSBuildCracker" testMSBuildCracker
@@ -101,6 +103,7 @@ type Fable =
             ?runWatch: string,
             ?noRestore: bool,
             ?noCache: bool,
+            ?noGitignore: bool,
             ?exclude: string list,
             ?lang: Fable.Lang,
             ?testMSBuildCracker: bool,
@@ -137,6 +140,7 @@ type Fable =
             |> CmdLine.apprendFlagIfSomeTrue "--typedArrays" typedArrays
             |> CmdLine.apprendFlagIfSomeTrue "--noRestore" noRestore
             |> CmdLine.apprendFlagIfSomeTrue "--noCache" noCache
+            |> CmdLine.apprendFlagIfSomeTrue "--noGitignore" noGitignore
             |> CmdLine.appendPrefixSeqIfSome "--exclude" exclude
             |> CmdLine.appendPrefix "--lang" lang
             |> CmdLine.apprendFlagIfSomeTrue "--test:MSBuildCracker" testMSBuildCracker
